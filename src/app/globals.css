@@ -20,12 +20,15 @@ body,
 
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
+    /* highlight color*/
+    --highlight: 180, 60%, 51%, 1;
+    --highlight-lighter: 180, 63%, 53%, 0.868;
 
     /* primary color */
     --primary: 220, 58%, 31%, 1;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 224, 20%, 41%, 1;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
