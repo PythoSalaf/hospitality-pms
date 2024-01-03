@@ -16,18 +16,21 @@ const AppLogo: React.FC<{
   };
 }> = ({ text, image }) => {
   return (
-    <div className="flex gap-x-4 items-center">
+    <div className="flex lg:gap-x-4 gap-x-2 items-center">
       <Image
         src={image?.src ?? LendQrLogo}
-        alt="Logo"
+        alt={image?.alt ?? "logo"}
         height={image?.height ?? 25}
         width={image?.width ?? 25}
       />
-      <span className={text?.className ?? `text-primary text-3xl font-bold`}>
+      <span
+        className={
+          text?.className ?? `text-primary text-xl lg:text-3xl font-semibold`
+        }
+      >
         {text?.value}
       </span>
     </div>
   );
 };
-
 export default AppLogo;
