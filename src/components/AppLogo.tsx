@@ -1,6 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import { LendQrLogo } from "~~/assets";
+import {
+  DEFAULT_LOGO_ALT,
+  DEFAULT_LOGO_HEIGHT,
+  DEFAULT_LOGO_URL,
+  DEFAULT_LOGO_WIDTH,
+} from "~~/constants";
 
 /**
 + * Renders the AppLogo component.
@@ -34,10 +40,10 @@ const AppLogo: React.FC<{
   return (
     <div className="flex lg:gap-x-4 gap-x-2 items-center">
       <Image
-        src={image?.src ?? LendQrLogo}
-        alt={image?.alt ?? "logo"}
-        height={image?.height ?? 25}
-        width={image?.width ?? 25}
+        src={image?.src ?? DEFAULT_LOGO_URL}
+        alt={image?.alt ?? DEFAULT_LOGO_ALT}
+        height={image?.height ?? DEFAULT_LOGO_HEIGHT}
+        width={image?.width ?? DEFAULT_LOGO_WIDTH}
       />
       <span
         className={
