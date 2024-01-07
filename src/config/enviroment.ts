@@ -1,6 +1,10 @@
 const DEFAULT_NODE_ENV = "development";
+const DEFAULT_APP_NAME = "lendsqr";
 
 const ENV = {
+  // APP
+
+  APP_NAME: process.env.APP_NAME ?? DEFAULT_APP_NAME,
   // env
   NODE_ENV: process.env.NODE_ENV ?? DEFAULT_NODE_ENV,
   // next
