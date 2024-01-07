@@ -17,28 +17,37 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "~~/components/ui/button";
 import Link from "next/link";
 import { appRoutes } from "~~/routes";
+import { useRegisterUser } from "../_hooks/useRegisterUser";
 
 const RegisterForm = () => {
-  const [isPending, startTransition] = useTransition();
-  const form = useForm<z.infer<typeof RegisterSchema>>({
+  const _form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
       email: "",
       password: "",
+      name: "",
     },
   });
-  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
-    startTransition(() => {
-      console.log(values);
-    });
-  };
+  const { onSubmit, isPending } = useRegisterUser();
   const [showPwd, setShowPwd] = useState(false);
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+    <Form {..._form}>
+      <form onSubmit={_form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="space-y-4">
           <FormField
-            control={form.control}
+            control={_form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input {...field} disabled={isPending} placeholder="Name" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={_form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
@@ -55,7 +64,7 @@ const RegisterForm = () => {
             )}
           />
           <FormField
-            control={form.control}
+            control={_form.control}
             name="password"
             render={({ field }) => (
               <FormItem>

@@ -4,6 +4,10 @@ export const authRoutes = {
   register: "/register",
   forgotPassword: "/forgot-password",
   resetPassword: "/reset-password",
+  verify: "/verify",
+};
+export const errorRoutes = {
+  error: "/error",
 };
 
 export const settingRoutes = {

@@ -1,5 +1,5 @@
 import { apiV1ProtectedRoutes } from "./api";
-import { authRoutes, settingRoutes } from "./pages";
+import { authRoutes, errorRoutes, settingRoutes } from "./pages";
 
 // main routes
 export const publicRoutes = {
@@ -16,4 +16,5 @@ export const authProtectedRoutes = {
 export const appRoutes = {
   ...publicRoutes,
   ...authProtectedRoutes,
+  ...errorRoutes,
 };

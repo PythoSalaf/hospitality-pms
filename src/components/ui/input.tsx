@@ -24,6 +24,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {isPassword && (
           <button
             onClick={onShowPassword}
+            type="button"
             className={`uppercase text-xs text-highlight absolute bg-inherit top-0 bottom-0 right-0 my-0.5 mr-0.5 pl-2 pr-4`}
           >
             {type === "password" ? "Show" : "Hide"}

@@ -5,6 +5,9 @@ export const RegisterSchema = z.object({
   email: z.string().email({
     message: "Email is required",
   }),
+  name: z.string().min(4, {
+    message: "Name should be at least 4 characters",
+  }),
   password: z
     .string()
     .refine((password) => GENERAL_PASSWORD_REGEX.test(password), {

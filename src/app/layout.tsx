@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Toaster } from "~~/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Lendsqr",
@@ -45,6 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${avenirNext.variable} ${inter.className}`}>
+        <Toaster />
         <div className="font-avenir">{children}</div>
       </body>
     </html>

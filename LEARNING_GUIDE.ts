@@ -26,7 +26,7 @@
 // - Golang 1 project, all the way
 
 // - Correct Font & Design Adjustments
-// - Implement authentication
+// - Implement authentication -> setup db, setup next auth, setup logic in next auth, make use of resend, n sonner
 // - Write Unit tests & Integration tests(if need be)
 // - Implement E2E tests with cypress
 // - Implement CI/CD with github actions
