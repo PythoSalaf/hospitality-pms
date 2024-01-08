@@ -11,7 +11,6 @@ import {
   Form,
 } from "~~/components/ui/form";
 import { Input } from "~~/components/ui/input";
-
 import { RegisterSchema } from "../_schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "~~/components/ui/button";
@@ -19,7 +18,10 @@ import Link from "next/link";
 import { appRoutes } from "~~/routes";
 import { useRegisterUser } from "../_hooks/useRegisterUser";
 
-const RegisterForm = () => {
+const RegisterForm: React.FC<{
+  onSubmit: (values: z.infer<typeof RegisterSchema>) => void;
+  isLoading?: boolean;
+}> = ({ onSubmit, isLoading: isPending }) => {
   const _form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
@@ -28,11 +30,15 @@ const RegisterForm = () => {
       name: "",
     },
   });
-  const { onSubmit, isPending } = useRegisterUser();
+
   const [showPwd, setShowPwd] = useState(false);
   return (
     <Form {..._form}>
-      <form onSubmit={_form.handleSubmit(onSubmit)} className="space-y-6">
+      <form
+        role="form"
+        onSubmit={_form.handleSubmit(onSubmit)}
+        className="space-y-6"
+      >
         <div className="space-y-4">
           <FormField
             control={_form.control}
@@ -40,7 +46,12 @@ const RegisterForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input {...field} disabled={isPending} placeholder="Name" />
+                  <Input
+                    {...field}
+                    disabled={isPending}
+                    placeholder="Name"
+                    role="textbox"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -57,6 +68,7 @@ const RegisterForm = () => {
                     disabled={isPending}
                     placeholder="Email"
                     type="email"
+                    role="email"
                   />
                 </FormControl>
                 <FormMessage />
@@ -76,6 +88,7 @@ const RegisterForm = () => {
                     type={showPwd ? "text" : "password"}
                     isPassword
                     onShowPassword={() => setShowPwd((val) => !val)}
+                    role="password"
                   />
                 </FormControl>
                 <FormMessage />
@@ -100,4 +113,8 @@ const RegisterForm = () => {
   );
 };
 
+export const RegisterFormContainer = () => {
+  const { onSubmit, isLoading: isPending } = useRegisterUser();
+  return <RegisterForm onSubmit={onSubmit} isLoading={isPending} />;
+};
 export default RegisterForm;
