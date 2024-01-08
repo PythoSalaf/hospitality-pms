@@ -7,7 +7,7 @@ import { useTransition } from "react";
 import { register } from "../_actions/register";
 
 export const useRegisterUser = () => {
-  const [isPending, startTransition] = useTransition();
+  const [isLoading, startTransition] = useTransition();
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     startTransition(() => {
@@ -17,5 +17,5 @@ export const useRegisterUser = () => {
       });
     });
   };
-  return { onSubmit, isPending };
+  return { onSubmit, isLoading };
 };
