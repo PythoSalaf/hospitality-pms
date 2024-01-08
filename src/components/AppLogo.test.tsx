@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "~~/lib/test";
 import AppLogo from "./AppLogo";
 import {
   DEFAULT_LOGO_ALT,
@@ -12,7 +12,7 @@ describe("AppLogo", () => {
   it("Should render an image with default props when no props are passed", () => {
     render(<AppLogo />);
     const imgEl = screen.getByRole("img");
-    expect(imgEl).toBeDefined();
+    expect(imgEl).toBeInTheDocument();
     expect(imgEl).toHaveAttribute("alt", DEFAULT_LOGO_ALT);
     expect(imgEl).toHaveAttribute("src", DEFAULT_LOGO_URL);
     expect(imgEl).toHaveAttribute("height", DEFAULT_LOGO_HEIGHT.toString());
@@ -27,7 +27,7 @@ describe("AppLogo", () => {
     };
     render(<AppLogo image={imgProps} />);
     const imgEl = screen.getByRole("img");
-    expect(imgEl).toBeDefined();
+    expect(imgEl).toBeInTheDocument();
     const imgSrcAttr = decodeURIComponent(
       imgEl?.attributes?.getNamedItem("src")?.value ?? ""
     );
@@ -45,7 +45,7 @@ describe("AppLogo", () => {
     const spanEl = screen.getByText((content) =>
       new RegExp(`${textProps.value}`, "i").test(content)
     );
-    expect(spanEl).toBeDefined();
+    expect(spanEl).toBeInTheDocument();
 
     expect(spanEl).toHaveAttribute("class", textProps.className);
   });
