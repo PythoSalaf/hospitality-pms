@@ -11,6 +11,8 @@ const config: Config = {
   prefix: "",
   theme: {
     fontFamily: {
+      worksans: ["var(--font-worksans)"],
+      roboto: ["var(--font-roboto)"],
       avenir: ["var(--font-avenir)"],
       sans: ["var(--font-avenir)", "var(--font-inter)", "sans-serif"],
     },

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Work_Sans, Roboto } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "~~/components/ui/sonner";
@@ -38,6 +38,13 @@ const avenirNext = localFont({
   variable: "--font-avenir",
 });
 
+const workSans = Work_Sans({ subsets: ["latin"], variable: "--font-worksans" });
+const roboto = Roboto({
+  subsets: ["latin"],
+  variable: "--roboto",
+  weight: ["300", "400", "500", "700"],
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -45,7 +52,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${avenirNext.variable} ${inter.className}`}>
+      <body
+        className={`${avenirNext.variable} ${inter.className} ${workSans.variable} ${roboto.variable}`}
+      >
         <Toaster />
         <div className="font-avenir">{children}</div>
       </body>
