@@ -41,10 +41,22 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   loading?: boolean;
+  loadingColor?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, loading, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      loading,
+      loadingColor = "#fff",
+      ...props
+    },
+    ref
+  ) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
@@ -54,7 +66,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           ...props,
           disabled: loading,
           children: loading ? (
-            <BeatLoader color="#aaa" />
+            <BeatLoader color={loadingColor} />
           ) : (
             <>{props.children}</>
           ),
