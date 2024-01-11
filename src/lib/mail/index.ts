@@ -7,7 +7,7 @@ const MAIL_FROM_EMAIL = ENV.MAIL_FROM_EMAIL;
 
 export const sendVerificationEmail = async (email: string, token: string) => {
   const resend = new Resend(ENV.RESEND_API_KEY);
-  const confirmLink = `${domain}/${appRoutes.verify}?token=${token}`;
+  const confirmLink = `${domain}/${appRoutes.verify}?token=${token}&email=${email}`;
 
   await resend.emails.send({
     from: MAIL_FROM_EMAIL,

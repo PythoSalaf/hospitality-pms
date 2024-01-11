@@ -1,9 +1,6 @@
 import AuthContainer from "../_components/AuthContainer";
+import VerificationForm from "./_components/VerificationForm";
 
 export default function Page() {
-  return (
-    <AuthContainer title="Verification!" description="Veriying link .....">
-      Verification Processing ....
-    </AuthContainer>
-  );
+  return <VerificationForm />;
 }
