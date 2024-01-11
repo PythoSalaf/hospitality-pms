@@ -44,6 +44,7 @@ const AppLogo: React.FC<{
         alt={image?.alt ?? DEFAULT_LOGO_ALT}
         height={image?.height ?? DEFAULT_LOGO_HEIGHT}
         width={image?.width ?? DEFAULT_LOGO_WIDTH}
+        style={{ width: "auto" }}
       />
       <span
         className={

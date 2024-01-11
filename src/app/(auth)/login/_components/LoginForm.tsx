@@ -17,33 +17,27 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "~~/components/ui/button";
 import Link from "next/link";
 import { appRoutes } from "~~/routes";
+import { useLoginUser } from "../_hooks/useLoginUser";
 
-const LoginForm = () => {
-  const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
-  const [isPending, startTransition] = useTransition();
-  const form = useForm<z.infer<typeof LoginSchema>>({
+const LoginForm: React.FC<{
+  onSubmit: (values: z.infer<typeof LoginSchema>) => void;
+  isLoading?: boolean;
+}> = ({ onSubmit, isLoading: isPending }) => {
+  const _form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-    setError("");
-    setSuccess("");
 
-    startTransition(() => {
-      console.log(values);
-    });
-  };
   const [showPwd, setShowPwd] = useState(false);
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+    <Form {..._form}>
+      <form onSubmit={_form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="space-y-4">
           <FormField
-            control={form.control}
+            control={_form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
@@ -60,7 +54,7 @@ const LoginForm = () => {
             )}
           />
           <FormField
-            control={form.control}
+            control={_form.control}
             name="password"
             render={({ field }) => (
               <FormItem>
@@ -93,12 +87,17 @@ const LoginForm = () => {
           </div>
         </div>
 
-        <Button disabled={isPending} type="submit" className="w-full uppercase">
+        <Button loading={isPending} type="submit" className="w-full uppercase">
           Log in
         </Button>
       </form>{" "}
     </Form>
   );
+};
+
+export const LoginFormContainer = () => {
+  const { onSubmit, isLoading } = useLoginUser();
+  return <LoginForm onSubmit={onSubmit} isLoading={isLoading} />;
 };
 
 export default LoginForm;

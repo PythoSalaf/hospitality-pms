@@ -55,4 +55,4 @@ export const apiAuthRoutePrefix: string = "/api/auth";
  * Default login redirect route
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT_ROUTE: string = "/dashboard";
+export const DEFAULT_LOGIN_REDIRECT_ROUTE: string = appRoutes.dashboard;

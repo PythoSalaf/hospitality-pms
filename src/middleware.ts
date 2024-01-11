@@ -10,6 +10,7 @@ import {
 
 const { auth } = NextAuth(authConfig);
 
+// TODO: Refactor middleware to use middleware groups
 export default auth((req) => {
   const { nextUrl } = req;
   const isUserAuthenticated = !!req.auth;

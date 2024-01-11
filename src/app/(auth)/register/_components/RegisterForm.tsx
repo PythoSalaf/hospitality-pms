@@ -105,7 +105,7 @@ const RegisterForm: React.FC<{
           </div>
         </div>
 
-        <Button disabled={isPending} type="submit" className="w-full uppercase">
+        <Button loading={isPending} type="submit" className="w-full uppercase">
           Register
         </Button>
       </form>{" "}

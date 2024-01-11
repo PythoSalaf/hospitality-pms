@@ -14,10 +14,12 @@ const {
   update,
 } = NextAuth({
   secret: ENV.NEXTAUTH_SECRET,
+  
   pages: {
     signIn: appRoutes.login,
     error: appRoutes.error,
     newUser: appRoutes.register,
+    
   },
   events: {
     async linkAccount({ user }) {
