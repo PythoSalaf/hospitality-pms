@@ -24,3 +24,9 @@ export const settingRoutes = {
   feesAndPricing: "/settings/fees-and-pricing",
   preferences: "/settings/preferences",
 };
+/**
+ * Setting Routes
+ */
+export const documentationRoutes = {
+  documentationHome: "/documentation",
+};

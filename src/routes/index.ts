@@ -1,5 +1,10 @@
 import { apiV1ProtectedRoutes } from "./api";
-import { authRoutes, errorRoutes, settingRoutes } from "./pages";
+import {
+  authRoutes,
+  documentationRoutes,
+  errorRoutes,
+  settingRoutes,
+} from "./pages";
 
 export { authRoutes };
 
@@ -10,6 +15,7 @@ export { authRoutes };
 export const publicRoutes = {
   home: "/",
   notFound: "*",
+  ...documentationRoutes,
   ...authRoutes,
 };
 
