@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import { LendQrLogo } from "~~/assets";
 import {
   DEFAULT_LOGO_ALT,
   DEFAULT_LOGO_HEIGHT,
@@ -36,9 +35,14 @@ const AppLogo: React.FC<{
     value?: string;
     className?: string;
   };
-}> = ({ text, image }) => {
+  containerClassName?: string;
+}> = ({
+  text,
+  image,
+  containerClassName = "flex lg:gap-x-4 gap-x-2 items-center",
+}) => {
   return (
-    <div className="flex lg:gap-x-4 gap-x-2 items-center">
+    <div className={containerClassName}>
       <Image
         src={image?.src ?? DEFAULT_LOGO_URL}
         alt={image?.alt ?? DEFAULT_LOGO_ALT}
