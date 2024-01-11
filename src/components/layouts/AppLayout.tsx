@@ -8,9 +8,9 @@ const AppLayout: React.FC<{
   session?: Session | null;
 }> = ({ children, session }) => {
   return (
-    <div className="font-worksans">
+    <div className="font-worksans relative min-[100vh]">
       <TopBar session={session} />
-      <div className="flex  gap-4">
+      <div className="flex gap-4">
         <SideBar />
 
         {children}
