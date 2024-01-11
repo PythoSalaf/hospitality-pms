@@ -6,12 +6,15 @@ import { UserRepository } from "~~/repositories/UserRepository";
 import { sendVerificationEmail } from "~~/lib/mail";
 import { generateVerificationToken } from "~~/lib/token";
 
-export const register = async (values: z.infer<typeof RegisterSchema>) => {
+// TODO: Refactor to allow for dependency injection, so as to conduct tests properly
+export const register = async (
+  values: z.infer<typeof RegisterSchema>
+): Promise<{ isError: boolean; error?: string; success?: string }> => {
   const validatedFields = RegisterSchema.safeParse(values);
   const { getUserByEmail, createUser } = new UserRepository();
 
   if (!validatedFields.success) {
-    return { error: "Invalid fields!" };
+    return { isError: true, error: "Invalid fields!" };
   }
 
   const { email, password, name } = validatedFields.data;
@@ -20,7 +23,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const existingUser = await getUserByEmail({ email });
 
   if (existingUser) {
-    return { error: "Email already in use!" };
+    return { error: "Email already in use!", isError: true };
   }
 
   await createUser({
@@ -32,5 +35,5 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const verificationToken = await generateVerificationToken(email);
   await sendVerificationEmail(verificationToken.email, verificationToken.token);
 
-  return { success: "Confirmation email sent!" };
+  return { success: "Confirmation email sent!", isError: false };
 };
