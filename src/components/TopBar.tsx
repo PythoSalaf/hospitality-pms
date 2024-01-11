@@ -20,7 +20,7 @@ const TopBar: React.FC<{
 }> = ({ session }) => {
   return (
     <div
-      className={`bg-white  flex items-center  shadow-md ${GENERAL_LAYOUT_CONTAINER_PADDING}`}
+      className={`bg-white  flex items-center  shadow-md fixed  w-full ${GENERAL_LAYOUT_CONTAINER_PADDING} z-10`}
     >
       <AppLogo
         text={{
