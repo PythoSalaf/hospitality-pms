@@ -88,7 +88,7 @@ const SuccessMessage: React.FC<{ message: string }> = ({ message }) => {
         <p className="text-center">
           {message}{" "}
           <Link
-            href={appRoutes.dashboard}
+            href={appRoutes.login}
             className="text-primary underline hover:no-underline"
           >
             <span>Proceed</span>

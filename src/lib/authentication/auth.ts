@@ -6,7 +6,13 @@ import { authConfig } from "./config";
 import { db } from "../database";
 import { UserRepository } from "~~/repositories/UserRepository";
 
-const { handlers, auth, signIn, signOut, update } = NextAuth({
+const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut,
+  update,
+} = NextAuth({
   secret: ENV.NEXTAUTH_SECRET,
   pages: {
     signIn: appRoutes.login,
@@ -87,4 +93,4 @@ const { handlers, auth, signIn, signOut, update } = NextAuth({
   ...authConfig,
 });
 
-export { handlers as GET, handlers as POST, auth, signIn, signOut, update };
+export { GET, POST, auth, signIn, signOut, update };
