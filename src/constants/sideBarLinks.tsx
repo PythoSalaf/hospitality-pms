@@ -1,5 +1,27 @@
-import GuarantorsIcon from "~~/components/icons/GuarantorsIcon";
-import UsersIcon from "~~/components/icons/UsersIcon";
+import {
+  DecisionModelIcon,
+  GuarantorsIcon,
+  UsersIcon,
+  LoansIcon,
+  SavingsIcon,
+  LoanRequestIcon,
+  WhitelistIcon,
+  KarmaIcon,
+  OrganizationIcon,
+  LoanProductIcon,
+  SavingProductIcon,
+  FeeAndChargeIcon,
+  TransactionIcon,
+  ServiceIcon,
+  ServiceAccountIcon,
+  SettlementIcon,
+  ReportIcon,
+  PreferenceIcon,
+  FeeAndPricingIcon,
+  AuditLogIcon,
+} from "~~/components/icons";
+import { appRoutes } from "~~/routes";
+
 import { TSideBarLink, TSideBarLinkCategoryItem } from "~~/types";
 
 export const SIDEBAR_LINKS: TSideBarLink[] = [
@@ -7,141 +29,122 @@ export const SIDEBAR_LINKS: TSideBarLink[] = [
   {
     icon: <UsersIcon />,
     title: "Users",
-    url: "",
+    url: appRoutes.customerUsers,
     category: "customers",
   },
   {
     icon: <GuarantorsIcon />,
     title: "Guarantors",
-    url: "",
+    url: appRoutes.customerGuarantors,
     category: "customers",
   },
   {
-    icon: <GuarantorsIcon />,
+    icon: <LoansIcon />,
     title: "Loans",
     url: "",
     category: "customers",
   },
   {
-    icon: <GuarantorsIcon />,
+    icon: <DecisionModelIcon />,
     title: "Decision Models",
     url: "",
     category: "customers",
   },
   {
-    icon: <GuarantorsIcon />,
+    icon: <SavingsIcon />,
     title: "Savings",
     url: "",
     category: "customers",
   },
   {
-    icon: <GuarantorsIcon />,
+    icon: <LoanRequestIcon />,
     title: "Loan Requests",
     url: "",
     category: "customers",
   },
   {
-    icon: <GuarantorsIcon />,
+    icon: <WhitelistIcon />,
     title: "Whitelist",
     url: "",
     category: "customers",
   },
   {
-    icon: <GuarantorsIcon />,
+    icon: <KarmaIcon />,
     title: "Karma",
     url: "",
     category: "customers",
   },
-  //   businesses
+  // businesses
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <OrganizationIcon />,
     title: "Organization",
     url: "",
     category: "businesses",
   },
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <LoanProductIcon />,
     title: "Loan Products",
     url: "",
     category: "businesses",
   },
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <SavingProductIcon />,
     title: "Savings Products",
     url: "",
     category: "businesses",
   },
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <FeeAndChargeIcon />,
     title: "Fees and Charges",
     url: "",
     category: "businesses",
   },
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <TransactionIcon />,
     title: "Transactions",
     url: "",
     category: "businesses",
   },
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <ServiceIcon />,
     title: "Services",
     url: "",
     category: "businesses",
   },
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <ServiceAccountIcon />,
     title: "Service Account",
     url: "",
     category: "businesses",
   },
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <SettlementIcon />,
     title: "Settlements",
     url: "",
     category: "businesses",
   },
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <ReportIcon />,
     title: "Reports",
     url: "",
     category: "businesses",
   },
-  //   settings
+  // settings
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <PreferenceIcon />,
     title: "Preferences",
     url: "",
     category: "settings",
   },
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <FeeAndPricingIcon />,
     title: "Fees and Pricing",
     url: "",
     category: "settings",
   },
   {
-    icon: <GuarantorsIcon />,
-
+    icon: <AuditLogIcon />,
     title: "Audit Logs",
-    url: "",
-    category: "settings",
-  },
-  {
-    icon: <GuarantorsIcon />,
-
-    title: "System Messages",
     url: "",
     category: "settings",
   },
