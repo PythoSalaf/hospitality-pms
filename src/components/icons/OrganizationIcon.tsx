@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProps } from "~~/types";
 
-const BriefcaseIcon: React.FC<IconProps> = (props) => {
+const OrganizationIcon: React.FC<IconProps> = (props) => {
   return (
     <svg
       width="16"
@@ -24,4 +24,4 @@ const BriefcaseIcon: React.FC<IconProps> = (props) => {
   );
 };
 
-export default BriefcaseIcon;
+export default OrganizationIcon;

@@ -1,3 +1,5 @@
+export { type IconProps } from "./icon";
+
 export type TOrganization = {
   name: string;
   id: string;
