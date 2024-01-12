@@ -15,12 +15,13 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Session } from "next-auth";
 
+export const TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME = `md:mt-[15vh]`;
 const TopBar: React.FC<{
   session?: Session | null;
 }> = ({ session }) => {
   return (
     <div
-      className={`bg-white  flex items-center  shadow-md fixed  w-full ${GENERAL_LAYOUT_CONTAINER_PADDING} z-10`}
+      className={`bg-white  flex items-center max-h-[15vh]  shadow-md fixed  w-full min-w-[100vw] ${GENERAL_LAYOUT_CONTAINER_PADDING} z-10`}
     >
       <AppLogo
         text={{
@@ -40,10 +41,10 @@ const TopActions: React.FC<{
   session?: Session | null;
 }> = ({ session }) => {
   return (
-    <div className="w-8/12 flex justify-end items-center lg:gap-x-6">
+    <div className="w-8/12 flex justify-end items-center lg:gap-x-5">
       <Link
         href={appRoutes.documentationHome}
-        className="text-primary underline hover:no-underline font-roboto"
+        className="text-primary underline hover:no-underline underline-offset-2 font-roboto"
       >
         <span>Docs</span>
       </Link>
