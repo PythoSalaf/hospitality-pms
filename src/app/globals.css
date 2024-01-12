@@ -23,6 +23,7 @@ body,
     /* highlight color*/
     --highlight: 180, 60%, 51%, 1;
     --highlight-lighter: 180, 63%, 53%, 0.868;
+    --highlight-lightest: 180, 63%, 53%, 0.208;
 
     /* primary color */
     --primary: 220, 58%, 31%, 1;

@@ -32,6 +32,7 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         "highlight-lighter": "hsl(var(--highlight-lighter))",
+        "highlight-lightest": "hsl(var(--highlight-lightest))",
         highlight: {
           DEFAULT: "hsl(var(--highlight))",
           foreground: "hsl(var(--primary-foreground))",
