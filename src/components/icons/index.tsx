@@ -23,8 +23,16 @@ import TransactionIcon from "./TransactionIcon";
 import UsersIcon from "./UsersIcon";
 import WhitelistIcon from "./WhitelistIcon";
 import BackArrowIcon from "./BackArrowIcon";
+import ActiveUserCardIcon from "./ActiveUserCardIcon";
+import UserCardIcon from "./UserCardIcon";
+import UserWithLoanCardIcon from "./UserWithLoanCardIcon";
+import UserWithSavingsCardIcon from "./UserWithSavingsCardIcon";
 
 export {
+  ActiveUserCardIcon,
+  UserCardIcon,
+  UserWithLoanCardIcon,
+  UserWithSavingsCardIcon,
   BackArrowIcon,
   AuditLogIcon,
   BellOutlinedIcon,
