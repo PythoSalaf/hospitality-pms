@@ -1,9 +1,11 @@
-import PageTitle from "~~/components/page/PageTitle";
+import PageHeader from "~~/components/page/PageHeader";
+import { UserCards } from "./_components/UserCard";
 
 const Page = () => {
   return (
     <div className="">
-      <PageTitle text="Users" />
+      <PageHeader title={{ text: "Users" }} />
+      <UserCards />
     </div>
   );
 };
