@@ -1,6 +1,7 @@
 import { apiV1ProtectedRoutes } from "./api";
 import {
   authRoutes,
+  customerRoutes,
   documentationRoutes,
   errorRoutes,
   settingRoutes,
@@ -35,6 +36,7 @@ export const publicRoutes = {
 export const authProtectedRoutes = {
   newPassword: "/new-password",
   dashboard: "/dashboard",
+  ...customerRoutes,
   ...apiV1ProtectedRoutes,
   ...settingRoutes,
 };

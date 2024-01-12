@@ -25,8 +25,17 @@ export const settingRoutes = {
   preferences: "/settings/preferences",
 };
 /**
- * Setting Routes
+ * docmentation Routes
  */
 export const documentationRoutes = {
   documentationHome: "/documentation",
+};
+/**
+ * customer Routes
+ */
+export const customerRoutes = {
+  customerUsers: "/customers/users",
+  customerDecisionModels: "/customers/decision-models",
+  customerKarma: "/customers/karma",
+  customerGuarantors: "/customers/guarantors",
 };
