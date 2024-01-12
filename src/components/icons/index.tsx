@@ -22,8 +22,10 @@ import SettlementIcon from "./SettlementIcon";
 import TransactionIcon from "./TransactionIcon";
 import UsersIcon from "./UsersIcon";
 import WhitelistIcon from "./WhitelistIcon";
+import BackArrowIcon from "./BackArrowIcon";
 
 export {
+  BackArrowIcon,
   AuditLogIcon,
   BellOutlinedIcon,
   BriefcaseIcon,
