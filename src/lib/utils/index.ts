@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import mediaQuery from "css-mediaquery";
+export { formatNumberWithCommas } from "./number";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
