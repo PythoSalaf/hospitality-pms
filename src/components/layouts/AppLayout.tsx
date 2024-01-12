@@ -10,10 +10,15 @@ const AppLayout: React.FC<{
   return (
     <div className="font-worksans relative min-[100vh]">
       <TopBar session={session} />
-      <div className="flex gap-4">
+      <div className="flex">
         <SideBar />
+        {/* content */}
+        <div className="px-4">
+          {/* to accomodate for fixed heading */}
+          <div className="md:mt-[15vh]" />
 
-        {children}
+          {children}
+        </div>
       </div>
     </div>
   );
