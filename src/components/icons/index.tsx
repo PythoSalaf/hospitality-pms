@@ -27,8 +27,10 @@ import ActiveUserCardIcon from "./ActiveUserCardIcon";
 import UserCardIcon from "./UserCardIcon";
 import UserWithLoanCardIcon from "./UserWithLoanCardIcon";
 import UserWithSavingsCardIcon from "./UserWithSavingsCardIcon";
+import FilterResultIcon from "./FilterResultIcon";
 
 export {
+  FilterResultIcon,
   ActiveUserCardIcon,
   UserCardIcon,
   UserWithLoanCardIcon,
