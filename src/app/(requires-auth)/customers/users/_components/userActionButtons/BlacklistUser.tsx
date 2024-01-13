@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "~~/components/ui/button";
 import { TUser } from "../../_types";
 import {
@@ -13,6 +13,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "~~/components/ui/alert-dialog";
+import useChangeUserStatus from "../../_hooks/useChangeUserStatus";
 
 type TBlacklistProps = {
   user?: TUser;
@@ -23,6 +24,11 @@ export const BlacklistBtn: React.FC<Pick<TBlacklistProps, "user">> = ({
   user,
 }) => {
   const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState<TUser["status"]>();
+  useEffect(() => {
+    setStatus(user?.status);
+  }, [user?.status]);
+
   return (
     <>
       <BlacklistUser
@@ -32,6 +38,7 @@ export const BlacklistBtn: React.FC<Pick<TBlacklistProps, "user">> = ({
       />
       <Button
         onClick={() => setOpen(true)}
+        disabled={status === "blacklisted"}
         variant={"outline"}
         className={`border-destructive text-destructive  uppercase text-xs font-semibold bg-transparent hover:bg-transparent hover:border-black tracking-wider`}
         // size={`sm`}
@@ -42,11 +49,16 @@ export const BlacklistBtn: React.FC<Pick<TBlacklistProps, "user">> = ({
   );
 };
 
-const BlacklistUser: React.FC<TBlacklistProps> = ({
-  user,
-  open = false,
-  handleClose,
-}) => {
+const BlacklistUser: React.FC<
+  TBlacklistProps & { onBlacklist?: () => void }
+> = ({ user, open = false, handleClose, onBlacklist }) => {
+  const { onChangeUserStatus, isLoading } = useChangeUserStatus();
+  const handleBlacklist = () => {
+    if (!user) return;
+    onChangeUserStatus({ id: user?.id, status: "blacklisted" });
+    onBlacklist?.();
+    handleClose?.();
+  };
   return (
     <>
       <AlertDialog open={open}>
@@ -61,7 +73,9 @@ const BlacklistUser: React.FC<TBlacklistProps> = ({
             <AlertDialogCancel onClick={() => handleClose?.()}>
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction>Proceed</AlertDialogAction>
+            <AlertDialogAction onClick={() => handleBlacklist()}>
+              Proceed
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

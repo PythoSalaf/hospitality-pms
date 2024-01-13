@@ -5,7 +5,6 @@ import { DataTable } from "~~/components/ui/data-table";
 import FilterUsers from "./FilterUsers";
 import { ColumnDef } from "@tanstack/react-table";
 import { appRoutes } from "~~/routes";
-import { shortenString } from "~~/lib/utils";
 import moment from "moment";
 import UserActionDropdown from "./UserActionDropdown";
 import { useState } from "react";
@@ -15,8 +14,6 @@ import { usePagination } from "~~/hooks/usePagination";
 import useGetUsers from "../_hooks/useGetUsers";
 import Link from "next/link";
 import React from "react";
-
-// type TAction = "view" | "edit" | "delete";
 
 export const ColumnHeader: React.FC<{
   name: string;
@@ -36,9 +33,11 @@ export const ColumnHeader: React.FC<{
 const generateUserColumns = ({
   filter,
   handleFilter,
+  onDataRefresh,
 }: {
   filter?: TUserFilter;
   handleFilter: (props?: TUserFilter) => void;
+  onDataRefresh?: () => void;
 }): ColumnDef<TUser>[] => [
   {
     accessorKey: "organization",
@@ -180,25 +179,31 @@ const generateUserColumns = ({
     cell: ({ row }) => {
       const user = row.original;
 
-      return <UserActionDropdown user={user} />;
+      return (
+        <UserActionDropdown user={user} onCompleteAction={onDataRefresh} />
+      );
     },
   },
 ];
-const UserTableContainer: React.FC<{
-  columns: ColumnDef<TUser>[];
-  filter?: TUserFilter;
-}> = ({ columns, filter }) => {
-  // TODO: fix render pagination issue: 10 min, then move on to filter, then mobile reponsive user, then user details fix ui, then local storage, then
-
+const UsersTable: React.FC = () => {
   const { pagination, handlePagination } = usePagination();
-  console.log(pagination, "pagination");
-  console.log(filter);
-  const { data: users, isLoading: isFetching } = useGetUsers({
+  const [filter, setFilter] = useState<TUserFilter>();
+
+  const {
+    data: users,
+    isLoading: isFetching,
+    forceRefresh,
+  } = useGetUsers({
     pagination: {
       limit: pagination.pageSize,
       page: pagination.pageIndex + 1,
     },
     filter,
+  });
+  const columns = generateUserColumns({
+    filter,
+    handleFilter: (props) => setFilter(props),
+    onDataRefresh: forceRefresh,
   });
 
   return (
@@ -215,13 +220,4 @@ const UserTableContainer: React.FC<{
   );
 };
 
-const UsersTable = () => {
-  const [filter, setFilter] = useState<TUserFilter>();
-
-  const USER_COLUMNS = generateUserColumns({
-    filter,
-    handleFilter: (props) => setFilter(props),
-  });
-  return <UserTableContainer columns={USER_COLUMNS} filter={filter} />;
-};
 export default UsersTable;

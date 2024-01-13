@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "~~/components/ui/button";
 import { TUser } from "../../_types";
 import {
@@ -13,6 +13,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "~~/components/ui/alert-dialog";
+import useChangeUserStatus from "../../_hooks/useChangeUserStatus";
 
 type TActivateProps = {
   user?: TUser;
@@ -23,14 +24,21 @@ export const ActivateUserBtn: React.FC<Pick<TActivateProps, "user">> = ({
   user,
 }) => {
   const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState<TUser["status"]>();
+  useEffect(() => {
+    setStatus(user?.status);
+  }, [user?.status]);
+
   return (
     <>
       <ActivateUser
         open={open}
         handleClose={() => setOpen(false)}
         user={user}
+        onActivate={() => setStatus("active")}
       />
       <Button
+        disabled={status === "active"}
         onClick={() => setOpen(true)}
         variant={"outline"}
         className={`border-highlight text-highlight uppercase text-xs font-semibold bg-transparent hover:bg-transparent hover:border-black tracking-wider`}
@@ -42,12 +50,19 @@ export const ActivateUserBtn: React.FC<Pick<TActivateProps, "user">> = ({
   );
 };
 
-const ActivateUser: React.FC<TActivateProps> = ({
+const ActivateUser: React.FC<TActivateProps & { onActivate?: () => void }> = ({
   user,
   open = false,
   handleClose,
+  onActivate,
 }) => {
-  // TODO: Implement activate hook and use it here
+  const { onChangeUserStatus, isLoading } = useChangeUserStatus();
+  const handleActivate = () => {
+    if (!user) return;
+    onChangeUserStatus({ id: user?.id, status: "active" });
+    onActivate?.();
+    handleClose?.();
+  };
   return (
     <>
       <AlertDialog open={open}>
@@ -62,7 +77,9 @@ const ActivateUser: React.FC<TActivateProps> = ({
             <AlertDialogCancel onClick={() => handleClose?.()}>
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction>Proceed</AlertDialogAction>
+            <AlertDialogAction onClick={() => handleActivate()}>
+              Proceed
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

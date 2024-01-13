@@ -12,7 +12,10 @@ import Link from "next/link";
 import BlacklistUser from "./userActionButtons/BlacklistUser";
 import { useState } from "react";
 import ActivateUser from "./userActionButtons/ActivateUser";
-const UserActionDropdown: React.FC<{ user: TUser }> = ({ user }) => {
+const UserActionDropdown: React.FC<{
+  user: TUser;
+  onCompleteAction?: () => void;
+}> = ({ user, onCompleteAction }) => {
   const [action, setAction] = useState<"blacklist" | "activate">();
   return (
     <>
@@ -20,11 +23,13 @@ const UserActionDropdown: React.FC<{ user: TUser }> = ({ user }) => {
         user={user}
         open={action === "blacklist"}
         handleClose={() => setAction(undefined)}
+        onBlacklist={() => onCompleteAction?.()}
       />
       <ActivateUser
         user={user}
         open={action === "activate"}
         handleClose={() => setAction(undefined)}
+        onActivate={() => onCompleteAction?.()}
       />
       <DropdownMenu defaultOpen={action === undefined ? undefined : false}>
         {/* defaultOpen prop is done as above so that it closes dropdown menu when an action modal is present */}

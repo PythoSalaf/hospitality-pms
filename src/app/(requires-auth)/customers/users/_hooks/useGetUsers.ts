@@ -88,7 +88,10 @@ const useGetUsers = (props: IProps = {}) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState<TResponseData["data"]>();
-
+  const [refresh, setRefresh] = useState(false);
+  const forceRefresh = () => {
+    setRefresh((val) => !val);
+  };
   useEffect(() => {
     // Define a cleanup function to avoid setting state on an unmounted component
     let isMounted = true;
@@ -119,13 +122,14 @@ const useGetUsers = (props: IProps = {}) => {
     return () => {
       isMounted = false;
     };
-  }, [props.pagination?.page, props.pagination?.limit, props?.filter]); // Empty dependency array ensures that this effect runs only once
+  }, [props.pagination?.page, props.pagination?.limit, props?.filter, refresh]); // Empty dependency array ensures that this effect runs only once
 
   return {
     data,
     isLoading,
     isError,
     isSuccess,
+    forceRefresh,
   };
 };
 
