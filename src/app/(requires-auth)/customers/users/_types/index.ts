@@ -1,4 +1,8 @@
 import { TOrganization } from "~~/types";
+export type {
+  TUserGeneralDetailCategoryItem,
+  TUserGeneralDetailItem,
+} from "./userGeneralDetail";
 
 export type TUserFilter = Partial<{
   status: TUserStatus;
@@ -8,6 +12,7 @@ export type TUserFilter = Partial<{
   date: string;
   organizationId: string;
 }>;
+export type TUserStatus = "inactive" | "pending" | "blacklisted" | "active";
 
 export type TUser = {
   id: string;
@@ -15,8 +20,7 @@ export type TUser = {
   email: string;
   phoneNumber: string;
   dateJoined: string;
-  status: string;
-  // status: TUserStatus;
+  status: TUserStatus;
   dob: string;
   organizationId: string;
   organization: TOrganization;
@@ -57,5 +61,3 @@ export type TUserDetails = TUser & {
     relationship: string;
   };
 };
-
-export type TUserStatus = "inactive" | "pending" | "blacklisted" | "active";

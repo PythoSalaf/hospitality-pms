@@ -11,7 +11,7 @@ const Page = ({ params: { id } }: { params: { id: string } }) => {
       <PageGoBack text="Back to Users" url={appRoutes.customerUsers} />
       <UserDetailPageHeader />
 
-      <UserDetailsContainer />
+      <UserDetailsContainer {...{ id }} />
     </div>
   );
 };

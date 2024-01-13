@@ -1,4 +1,5 @@
 import { TUser, TUserDetails, TUserFilter, TUserStatus } from "../_types";
+export { generateRandomUserDetails } from "./randomUserDetail";
 
 export const generateUserStatusColor = (
   status: TUserStatus

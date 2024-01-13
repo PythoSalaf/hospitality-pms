@@ -2,14 +2,16 @@ import React from "react";
 import PageHeader from "~~/components/page/PageHeader";
 import PageTitle from "~~/components/page/PageTitle";
 import { Button } from "~~/components/ui/button";
-import BlacklistUser from "./userActionButtons/BlacklistUser";
-import ActivateUser from "./userActionButtons/ActivateUser";
+import BlacklistUser, { BlacklistBtn } from "./userActionButtons/BlacklistUser";
+import ActivateUser, {
+  ActivateUserBtn,
+} from "./userActionButtons/ActivateUser";
 
-const UserDetailPageHeader = () => {
+const UserDetailPageHeader: React.FC = () => {
   return (
     <PageHeader
       title={{ text: "User Details" }}
-      actions={[<BlacklistUser />, <ActivateUser />]}
+      actions={[<BlacklistBtn />, <ActivateUserBtn />]}
     />
   );
 };

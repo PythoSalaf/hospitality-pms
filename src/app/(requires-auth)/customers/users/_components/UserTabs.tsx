@@ -5,6 +5,7 @@ import {
   TabsTrigger,
 } from "~~/components/ui/tabs";
 import GeneralDetails from "./tabItems/GeneralDetails";
+import { TUserDetails } from "../_types";
 const tabs = [
   { value: "general-details", label: "General Details" },
   { value: "documents", label: "Documents" },
@@ -14,7 +15,7 @@ const tabs = [
   { value: "app-and-system", label: "App and System" },
 ];
 
-const UserTabs = () => {
+const UserTabs: React.FC<{ data?: TUserDetails }> = ({ data }) => {
   return (
     <Tabs defaultValue="general-details" className={``}>
       <TabsList
@@ -31,7 +32,7 @@ const UserTabs = () => {
         ))}
       </TabsList>
       <TabsContent value="general-details">
-        <GeneralDetails />
+        <GeneralDetails data={data} />
       </TabsContent>
     </Tabs>
   );
