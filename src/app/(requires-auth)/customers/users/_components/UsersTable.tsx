@@ -222,6 +222,6 @@ const UsersTable = () => {
     filter,
     handleFilter: (props) => setFilter(props),
   });
-  return <UserTableContainer columns={USER_COLUMNS} />;
+  return <UserTableContainer columns={USER_COLUMNS} filter={filter} />;
 };
 export default UsersTable;
