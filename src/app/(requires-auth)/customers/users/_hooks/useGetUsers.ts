@@ -1,7 +1,13 @@
 import { TPagination } from "~~/types";
 import { TUser, TUserFilter, TUserDetails } from "../_types";
-import { matchUserToFilterParams, paginateUsers } from "../_utils";
+import {
+  generateRandomUserDetails,
+  matchUserToFilterParams,
+  paginateUsers,
+} from "../_utils";
 import { useEffect, useState } from "react";
+import { LOCAL_STORAGE_KEY_FOR_USERS } from "../_constants";
+import { faker } from "@faker-js/faker";
 
 export const QUERY_KEY_FOR_USERS = "users";
 const USERS_API_URL =
@@ -9,23 +15,51 @@ const USERS_API_URL =
 
 type TResponseData = {
   message: string;
-  data: { result: TUser[]; total: number };
+  data: {
+    result: TUser[];
+    total: number;
+    allUsersDataForLocalStorage: TUserDetails[];
+  };
 };
 interface IProps {
   pagination?: TPagination;
   filter?: TUserFilter;
 }
-export const getUsers = async (props: IProps): Promise<TResponseData> => {
+export const getUsers = async (props: IProps = {}): Promise<TResponseData> => {
   // TODO: Create an API that emulates a DB, so that it is properly done
   const url = `${USERS_API_URL}`;
+  const existingLocalStorageUsers = localStorage.getItem(
+    LOCAL_STORAGE_KEY_FOR_USERS
+  );
 
   try {
-    const res = await fetch(url);
-    if (!res.ok) {
-      throw new Error(`Failed to fetch data. Status: ${res?.status}`);
-    }
+    let data: TUserDetails[] = [];
+    if (existingLocalStorageUsers) {
+      const users: TUserDetails[] = JSON.parse(existingLocalStorageUsers);
+      data = users;
+    } else {
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(`Failed to fetch data. Status: ${res?.status}`);
+      }
 
-    const data = (await res.json()) as unknown as TUserDetails[];
+      let _data = (await res.json()) as unknown as TUserDetails[];
+      data = _data.map((user) => ({
+        ...user,
+        dateJoined: faker.date.past().toDateString(),
+        dob: faker.date.birthdate().toDateString(),
+      }));
+    }
+    // store in local storage, according to requirements
+    // TODO: refactor to be in its own function, also on visit to user details check n insert if not present
+    const usersLocalStorageData: TUserDetails[] = data.map((user) =>
+      generateRandomUserDetails(user)
+    );
+    // set data in local storage
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY_FOR_USERS,
+      JSON.stringify(usersLocalStorageData)
+    );
 
     const filteredData = data.filter((item) =>
       matchUserToFilterParams(item, props.filter)
@@ -41,6 +75,7 @@ export const getUsers = async (props: IProps): Promise<TResponseData> => {
       data: {
         total: filteredData.length,
         result: paginatedData,
+        allUsersDataForLocalStorage: usersLocalStorageData,
       },
     };
   } catch (error) {
