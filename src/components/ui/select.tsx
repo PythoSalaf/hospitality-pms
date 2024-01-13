@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import {
-  CaretSortIcon,
+  CaretDownIcon,
   CheckIcon,
   ChevronDownIcon,
   ChevronUpIcon,
@@ -31,7 +31,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <CaretSortIcon className="h-4 w-4 opacity-50" />
+      <CaretDownIcon className="h-5 w-5 opacity-50 font-bold" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
