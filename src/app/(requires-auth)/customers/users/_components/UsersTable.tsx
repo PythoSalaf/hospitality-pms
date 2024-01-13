@@ -52,12 +52,12 @@ const generateUserColumns = ({
     ),
     cell: ({ row }) => {
       return (
-        <div
+        <p
           className="font-normal text-[#545F7D]"
           title={row.original.organization.name}
         >
-          {shortenString({ input: row.original.organization.name })}
-        </div>
+          {row.original.organization.name}
+        </p>
       );
     },
   },
@@ -79,7 +79,7 @@ const generateUserColumns = ({
             className="font-normal text-[#545F7D] hover:text-primary hover:underline underline-offset-2"
             title={row.original.name}
           >
-            {shortenString({ input: row.original.name })}
+            {row.original.name}
           </p>
         </Link>
       );
@@ -98,9 +98,9 @@ const generateUserColumns = ({
 
     cell: ({ row }) => {
       return (
-        <div className="font-normal text-[#545F7D]" title={row.original.email}>
-          {shortenString({ input: row.original.email })}
-        </div>
+        <p className="font-normal text-[#545F7D]" title={row.original.email}>
+          {row.original.email}
+        </p>
       );
     },
   },
@@ -117,12 +117,12 @@ const generateUserColumns = ({
 
     cell: ({ row }) => {
       return (
-        <div
+        <p
           className="font-normal text-[#545F7D]"
           title={row.original.phoneNumber}
         >
-          {shortenString({ input: row.original.phoneNumber })}
-        </div>
+          {row.original.phoneNumber}
+        </p>
       );
     },
   },
@@ -139,9 +139,9 @@ const generateUserColumns = ({
 
     cell: ({ row }) => {
       return (
-        <div className="font-normal text-[#545F7D]">
+        <p className="font-normal text-[#545F7D]">
           {moment(row.original.dateJoined).format("MMMM D, YYYY h:mm A")}
-        </div>
+        </p>
       );
     },
   },
