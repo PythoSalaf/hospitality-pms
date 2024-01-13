@@ -5,7 +5,7 @@ import { appRoutes } from "~~/routes";
 import UserDetailPageHeader from "../_components/UserDetailPageHeader";
 import UserDetailsContainer from "../_components/UserDetailsContainer";
 
-const Page = ({ params: { id } }: { params: { id: number } }) => {
+const Page = ({ params: { id } }: { params: { id: string } }) => {
   return (
     <div className="">
       <PageGoBack text="Back to Users" url={appRoutes.customerUsers} />
