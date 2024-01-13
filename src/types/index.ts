@@ -16,3 +16,8 @@ export type TSideBarLink = {
 };
 
 export type TSideBarLinkCategoryItem = { title: string; items: TSideBarLink[] };
+
+export type TPagination = {
+  page: number;
+  limit: number;
+};
