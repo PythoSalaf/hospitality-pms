@@ -70,7 +70,7 @@ export const UserCard: React.FC<UserCardProps> = ({
         >
           {title}
         </p>
-        <span className={`font-semibold text-secondary text-2xl font-worksans`}>
+        <span className={`font-semibold text-primary text-2xl font-worksans`}>
           {formatNumberWithCommas(amount, 0)}
         </span>
       </CardContent>
