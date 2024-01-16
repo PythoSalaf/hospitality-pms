@@ -43,7 +43,10 @@ const GeneralDetails: React.FC<TProps> = ({ data }) => {
                         {(detail as unknown as TUserGeneralDetailItem).label}
                       </p>
                       <p
-                        className={`text-base capitalize font-medium text-[#545F7D]`}
+                        className={`text-base ${
+                          (detail as unknown as TUserGeneralDetailItem)
+                            .textTransform ?? "capitalize"
+                        } font-medium text-[#545F7D]`}
                       >
                         {(detail as unknown as TUserGeneralDetailItem).value}
                       </p>
@@ -72,7 +75,9 @@ const GeneralDetails: React.FC<TProps> = ({ data }) => {
                               {innerDetail.label}
                             </p>
                             <p
-                              className={`text-base capitalize font-medium text-[#545F7D]`}
+                              className={`text-base ${
+                                innerDetail.textTransform ?? "capitalize"
+                              } font-medium text-[#545F7D]`}
                             >
                               {innerDetail.value}
                             </p>

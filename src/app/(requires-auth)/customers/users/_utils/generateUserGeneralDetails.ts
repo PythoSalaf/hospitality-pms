@@ -21,7 +21,11 @@ export const generateUserGeneralDetailCategoryItems = (
       items: [
         { label: "Full Name", value: personalInfo?.fullName },
         { label: "Phone Number", value: personalInfo?.phoneNumber },
-        { label: "Email Address", value: personalInfo?.emailAddress },
+        {
+          label: "Email Address",
+          value: personalInfo?.emailAddress,
+          textTransform: "lowercase",
+        },
         { label: "BVN", value: personalInfo?.bvn },
         { label: "Gender", value: personalInfo?.gender },
         { label: "Marital Status", value: personalInfo?.maritalStatus },
@@ -49,7 +53,11 @@ export const generateUserGeneralDetailCategoryItems = (
           label: "Duration of Employment",
           value: educationAndEmployment?.durationOfEmployment,
         },
-        { label: "Office Email", value: educationAndEmployment?.officialEmail },
+        {
+          label: "Office Email",
+          value: educationAndEmployment?.officialEmail,
+          textTransform: "lowercase",
+        },
         {
           label: "Monthly Income",
           value: educationAndEmployment?.monthlyIncome,
@@ -82,6 +90,7 @@ export const generateUserGeneralDetailCategoryItems = (
         {
           label: "Email Address",
           value: guarantor?.emailAddress,
+          textTransform: "lowercase",
         },
         {
           label: "Relationship",
