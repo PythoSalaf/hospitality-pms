@@ -12,7 +12,7 @@ const AppLayout: React.FC<{
   const [isSideBarOpen, setIsSideBarOpen] = React.useState(false);
   const toggleSideBarOpen = () => setIsSideBarOpen((val) => !val);
   return (
-    <div className="font-worksans relative min-[100vh]">
+    <div className="font-worksans relative min-h-[100vh]">
       <TopBar
         session={session}
         isSideBarOpen={isSideBarOpen}
@@ -21,6 +21,7 @@ const AppLayout: React.FC<{
       <div className="flex flex-col lg:flex-row">
         {/* to accomodate for fixed  sidebar */}
         <div className={SIDEBAR_WIDTH_CLASS_NAME} />
+
         <SideBar
           isSideBarOpen={isSideBarOpen}
           toggleSideBarOpen={toggleSideBarOpen}
@@ -30,9 +31,7 @@ const AppLayout: React.FC<{
           {/* to accomodate for fixed heading */}
           <div className={TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME} />
 
-          <main className="px-4 lg:px-14 py-20 lg:py-7 w-full ">
-            {children}
-          </main>
+          <main className="px-4 lg:px-14 py-20 lg:py-7 ">{children}</main>
         </div>
       </div>
     </div>

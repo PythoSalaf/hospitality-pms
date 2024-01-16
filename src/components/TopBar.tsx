@@ -22,7 +22,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Session } from "next-auth";
 
-export const TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME = `md:mt-[15vh]`;
+export const TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME = `lg:mt-[15vh]`;
 const TopBar: React.FC<{
   session?: Session | null;
   isSideBarOpen?: boolean;
@@ -46,7 +46,7 @@ const TopBar: React.FC<{
       <Button
         variant={`ghost`}
         size={"icon"}
-        className="md:hidden flex mx-4"
+        className="lg:hidden flex mx-4"
         onClick={toggleSideBarOpen}
       >
         {isSideBarOpen ? (
@@ -118,17 +118,17 @@ const SearchBar = () => {
       <Input
         type="search"
         placeholder={GLOBAL_SEARCH_PLACEHOLDER_TEXT}
-        className="hidden md:block md:w-[100px] lg:w-[300px] rounded-tr-none rounded-br-none outline-none focus-visible:ring-0 focus-visible:outline-none"
+        className="hidden lg:block  lg:w-[300px] rounded-tr-none rounded-br-none outline-none focus-visible:ring-0 focus-visible:outline-none"
       />
       <Button
         size={`icon`}
-        className="md:hidden flex bg-transparent hover:bg-accent/90 md:rounded-tl-none md:rounded-bl-none "
+        className="lg:hidden flex bg-transparent hover:bg-accent/90 lg:rounded-tl-none lg:rounded-bl-none "
       >
-        <FaSearch className="text-primary md:text-white" />
+        <FaSearch className="text-primary lg:text-white" />
       </Button>
       <Button
         size={`icon`}
-        className="hidden md:flex rounded-tl-none rounded-bl-none "
+        className="hidden lg:flex rounded-tl-none rounded-bl-none "
       >
         <FaSearch className="text-white" />
       </Button>
