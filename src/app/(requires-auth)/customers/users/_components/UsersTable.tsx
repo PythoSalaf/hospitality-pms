@@ -23,7 +23,7 @@ export const ColumnHeader: React.FC<{
 }> = ({ name, handleFilter, filterValues, isActiveFilter = false }) => {
   return (
     <div className="flex items-center gap-2">
-      <span className="uppercase text-[#545F7D] text-xs font-semibold whitespace-nowrap">
+      <span className="uppercase text-[#545F7D] text-sm font-semibold whitespace-nowrap">
         {name}
       </span>
 
@@ -58,7 +58,7 @@ const generateUserColumns = ({
     cell: ({ row }) => {
       return (
         <p
-          className="font-normal text-[#545F7D]"
+          className="font-normal text-truncate text-sm text-[#545F7D]"
           title={row.original.organization.name}
         >
           {row.original.organization.name}
@@ -82,7 +82,7 @@ const generateUserColumns = ({
       return (
         <Link href={`${appRoutes.customerUsers}/${row.original.id}`}>
           <p
-            className="font-normal text-[#545F7D] hover:text-primary hover:underline underline-offset-2"
+            className="font-normal text-truncate text-sm text-[#545F7D] hover:text-primary hover:underline underline-offset-2"
             title={row.original.name}
           >
             {row.original.name}
@@ -105,7 +105,10 @@ const generateUserColumns = ({
 
     cell: ({ row }) => {
       return (
-        <p className="font-normal text-[#545F7D]" title={row.original.email}>
+        <p
+          className="font-normal text-truncate text-sm text-[#545F7D] "
+          title={row.original.email}
+        >
           {row.original.email}
         </p>
       );
@@ -126,7 +129,7 @@ const generateUserColumns = ({
     cell: ({ row }) => {
       return (
         <p
-          className="font-normal text-[#545F7D]"
+          className="font-normal text-truncate text-sm text-ellipsis text-[#545F7D]"
           title={row.original.phoneNumber}
         >
           {row.original.phoneNumber}
@@ -148,7 +151,7 @@ const generateUserColumns = ({
 
     cell: ({ row }) => {
       return (
-        <p className="font-normal text-[#545F7D]">
+        <p className="font-normal text-truncate text-sm text-[#545F7D]">
           {moment(row.original.dateJoined).format("MMMM D, YYYY h:mm A")}
         </p>
       );
@@ -218,15 +221,19 @@ const UsersTable: React.FC = () => {
   });
 
   return (
-    <div className={`w-full `}>
-      <DataTable
-        columns={columns}
-        data={users?.result}
-        total={users?.total}
-        onPaginationChange={handlePagination}
-        pagination={pagination}
-        loading={isFetching}
-      />
+    <div className={`w-full overflow-auto grid grid-cols-2`}>
+      <div className="col-span-2">
+        <DataTable
+          columns={columns}
+          // data={[]}
+          // total={0}
+          data={users?.result}
+          total={users?.total}
+          onPaginationChange={handlePagination}
+          pagination={pagination}
+          loading={isFetching}
+        />
+      </div>
     </div>
   );
 };
