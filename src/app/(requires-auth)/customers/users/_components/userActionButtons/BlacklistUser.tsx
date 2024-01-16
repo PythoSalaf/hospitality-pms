@@ -19,26 +19,32 @@ type TBlacklistProps = {
   user?: TUser;
   open?: boolean;
   handleClose?: () => void;
+  onBlacklist?: () => void;
 };
-export const BlacklistBtn: React.FC<Pick<TBlacklistProps, "user">> = ({
-  user,
-}) => {
+export const BlacklistBtn: React.FC<
+  Pick<TBlacklistProps, "user" | "onBlacklist">
+> = ({ user, onBlacklist }) => {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<TUser["status"]>();
   useEffect(() => {
     setStatus(user?.status);
   }, [user?.status]);
-
+  const handleBlacklist = () => {
+    onBlacklist?.();
+    setStatus("blacklisted");
+  };
   return (
     <>
       <BlacklistUser
         open={open}
         handleClose={() => setOpen(false)}
         user={user}
+        onBlacklist={handleBlacklist}
       />
       <Button
         onClick={() => setOpen(true)}
         disabled={status === "blacklisted"}
+        title={status === "blacklisted" ? "Already blacklisted" : ""}
         variant={"outline"}
         className={`border-destructive text-destructive  uppercase text-xs font-semibold bg-transparent hover:bg-transparent hover:border-black tracking-wider`}
         // size={`sm`}
@@ -49,9 +55,12 @@ export const BlacklistBtn: React.FC<Pick<TBlacklistProps, "user">> = ({
   );
 };
 
-const BlacklistUser: React.FC<
-  TBlacklistProps & { onBlacklist?: () => void }
-> = ({ user, open = false, handleClose, onBlacklist }) => {
+const BlacklistUser: React.FC<TBlacklistProps> = ({
+  user,
+  open = false,
+  handleClose,
+  onBlacklist,
+}) => {
   const { onChangeUserStatus, isLoading } = useChangeUserStatus();
   const handleBlacklist = () => {
     if (!user) return;

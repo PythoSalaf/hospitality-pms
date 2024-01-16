@@ -9,11 +9,17 @@ import ActivateUser, {
 import { TUserDetails } from "../_types";
 
 // TODO: Pick only props needed by the child comps
-const UserDetailPageHeader: React.FC<{ data?: TUserDetails }> = ({ data }) => {
+const UserDetailPageHeader: React.FC<{
+  data?: TUserDetails;
+  onCompleteAction?: () => void;
+}> = ({ data, onCompleteAction }) => {
   return (
     <PageHeader
       title={{ text: "User Details" }}
-      actions={[<BlacklistBtn user={data} />, <ActivateUserBtn user={data} />]}
+      actions={[
+        <BlacklistBtn user={data} onBlacklist={onCompleteAction} />,
+        <ActivateUserBtn user={data} onActivate={onCompleteAction} />,
+      ]}
     />
   );
 };

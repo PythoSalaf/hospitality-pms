@@ -7,13 +7,13 @@ import useGetUserDetails from "../_hooks/useGetUserDetails";
 import UserDetailPageHeader from "./UserDetailPageHeader";
 
 const UserDetailsContainer: React.FC<{ id: string }> = ({ id }) => {
-  const { data: user, isLoading } = useGetUserDetails({ id });
+  const { data: user, isLoading, forceRefresh } = useGetUserDetails({ id });
   if (user === null) {
     return <>User not found!</>;
   }
   return (
     <>
-      <UserDetailPageHeader data={user} />
+      <UserDetailPageHeader data={user} onCompleteAction={forceRefresh} />
 
       <div className="mt-12 lg:mt-16 font-worksans">
         <UserOverview data={user} isLoading={isLoading} />

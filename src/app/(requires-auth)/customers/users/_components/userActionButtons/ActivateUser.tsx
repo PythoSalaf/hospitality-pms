@@ -19,26 +19,31 @@ type TActivateProps = {
   user?: TUser;
   open?: boolean;
   handleClose?: () => void;
+  onActivate?: () => void;
 };
-export const ActivateUserBtn: React.FC<Pick<TActivateProps, "user">> = ({
-  user,
-}) => {
+export const ActivateUserBtn: React.FC<
+  Pick<TActivateProps, "user" | "onActivate">
+> = ({ user, onActivate }) => {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<TUser["status"]>();
   useEffect(() => {
     setStatus(user?.status);
   }, [user?.status]);
-
+  const handleActivate = () => {
+    setStatus("active");
+    onActivate?.();
+  };
   return (
     <>
       <ActivateUser
         open={open}
         handleClose={() => setOpen(false)}
         user={user}
-        onActivate={() => setStatus("active")}
+        onActivate={handleActivate}
       />
       <Button
         disabled={status === "active"}
+        title={status === "active" ? "Already active" : ""}
         onClick={() => setOpen(true)}
         variant={"outline"}
         className={`border-highlight text-highlight uppercase text-xs font-semibold bg-transparent hover:bg-transparent hover:border-black tracking-wider`}
@@ -50,7 +55,7 @@ export const ActivateUserBtn: React.FC<Pick<TActivateProps, "user">> = ({
   );
 };
 
-const ActivateUser: React.FC<TActivateProps & { onActivate?: () => void }> = ({
+const ActivateUser: React.FC<TActivateProps> = ({
   user,
   open = false,
   handleClose,
