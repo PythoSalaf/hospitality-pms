@@ -26,6 +26,7 @@ import {
 } from "./select";
 import SkeletonLoader from "../loader/SkeletonLoader";
 import { Button } from "./button";
+import ENV from "~~/config/enviroment";
 
 type SetPaginationFunction = React.Dispatch<
   React.SetStateAction<PaginationState>
@@ -59,15 +60,14 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: undefined,
     onPaginationChange,
     manualPagination: true,
-
-    debugTable: true,
+    debugTable: ENV.NODE_ENV === "development",
     pageCount: pageCount,
   });
 
   return (
     <div>
       <div className="">
-        <Table className="font-worksans rounded-md shadow-lg text-xs bg-white">
+        <Table className="font-worksans rounded-md shadow-lg bg-white">
           <TableHeader>
             {table?.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -141,7 +141,6 @@ export function DataTable<TData, TValue>({
           <Select
             value={`${table.getState().pagination.pageSize}`}
             onValueChange={(val) => {
-              console.log("first", val);
               table.resetPagination();
               table.setPagination((prev) => ({ ...prev, pageSize: +val }));
             }}
@@ -165,25 +164,16 @@ export function DataTable<TData, TValue>({
             <RCPagination
               className="flex gap-2 items-center font-worksans text-sm cursor-pointer text-[#545F7D]"
               total={total}
-              onChange={(page, pageSize) => {
-                console.log(page, pageSize, "pop");
-                table.setPagination(() => ({
-                  pageSize: table.getState().pagination.pageSize,
-                  pageIndex: page - 1,
-                }));
+              onChange={(pageIndex, pageSize) => {
+                if (onPaginationChange) {
+                  onPaginationChange({ pageIndex: pageIndex - 1, pageSize });
+                }
               }}
-              current={table.getState().pagination.pageIndex}
+              current={table.getState().pagination.pageIndex + 1}
               pageSize={table.getState().pagination.pageSize}
               prevIcon={
                 <Button
                   className={`bg-[#213F7D1A]  hover:bg-white p-1 h-6 `}
-                  onClick={() =>
-                    table.setPagination(() => ({
-                      pageSize: table.getState().pagination.pageSize,
-                      pageIndex: table.getState().pagination.pageIndex - 1,
-                    }))
-                  }
-                  disabled={!table?.getCanPreviousPage()}
                   size={`icon`}
                 >
                   <svg
@@ -203,7 +193,6 @@ export function DataTable<TData, TValue>({
                 </Button>
               }
               itemRender={(item, type, element) => {
-                console.log(item, "....");
                 if (type === "page") {
                   return (
                     <span
@@ -227,8 +216,6 @@ export function DataTable<TData, TValue>({
               nextIcon={
                 <Button
                   className={`bg-[#213F7D1A]  hover:bg-white  p-1 h-6 `}
-                  onClick={() => table?.nextPage()}
-                  disabled={!table?.getCanNextPage()}
                   size={`icon`}
                 >
                   <svg
@@ -247,14 +234,6 @@ export function DataTable<TData, TValue>({
               }
             />
           </div>
-
-          {/* <pre>
-            {JSON.stringify({
-              pageCount: table.getPageCount(),
-              pageSize: table.getState().pagination.pageSize,
-              total: table?.getTotalSize(),
-            })}
-          </pre> */}
         </div>
       </div>
     </div>
