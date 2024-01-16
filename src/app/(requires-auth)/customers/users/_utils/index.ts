@@ -89,10 +89,10 @@ export const matchUserToFilterParams = (
     isAMatch = false;
   }
   if (filter.date) {
-    const filterDate = new Date(filter?.date);
+    const filterDate = filter?.date;
     const userDate = new Date(user.dateJoined);
 
-    if (typeof filter?.date === "string" && !(userDate >= filterDate)) {
+    if (typeof filter?.date !== "undefined" && !(userDate >= filterDate)) {
       isAMatch = false;
     }
   }

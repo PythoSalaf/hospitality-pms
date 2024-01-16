@@ -28,8 +28,10 @@ import UserCardIcon from "./UserCardIcon";
 import UserWithLoanCardIcon from "./UserWithLoanCardIcon";
 import UserWithSavingsCardIcon from "./UserWithSavingsCardIcon";
 import FilterResultIcon from "./FilterResultIcon";
+import CalenderIcon from "./CalenderIcon";
 
 export {
+  CalenderIcon,
   FilterResultIcon,
   ActiveUserCardIcon,
   UserCardIcon,

@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { FilterResultIcon } from "~~/components/icons";
+import { CalenderIcon, FilterResultIcon } from "~~/components/icons";
 import { Button } from "~~/components/ui/button";
 import {
   Form,
@@ -25,11 +25,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~~/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "~~/components/ui/popover";
+import { format } from "date-fns";
+import { Calendar } from "~~/components/ui/calendar";
+import { cn } from "~~/lib/utils";
 
 const FilterUsers: React.FC<{
   handleSave: (props?: TUserFilter) => void;
   filterValues?: TUserFilter;
-}> = ({ handleSave, filterValues }) => {
+  isActive?: boolean;
+}> = ({ handleSave, filterValues, isActive = false }) => {
   const form = useForm<z.infer<typeof FilterUsersSchema>>({
     resolver: zodResolver(FilterUsersSchema),
     values: filterValues ?? {},
@@ -51,7 +60,7 @@ const FilterUsers: React.FC<{
   const handleReset = () => {
     handleSave(undefined);
     form.reset({
-      date: "",
+      date: undefined,
       email: "",
       name: "",
       organizationId: undefined,
@@ -65,7 +74,7 @@ const FilterUsers: React.FC<{
     <Dialog>
       {/* <Button variant={`ghost`} size={`icon`}> */}
       <DialogTrigger>
-        <FilterResultIcon />
+        <FilterResultIcon pathFill={isActive ? "#39CDCC" : undefined} />
       </DialogTrigger>
       {/* </Button> */}
       <DialogContent className={``}>
@@ -133,11 +142,39 @@ const FilterUsers: React.FC<{
               control={form.control}
               name="date"
               render={({ field }) => (
-                <FormItem className={`space-y-1`}>
+                <FormItem className={`flex flex-col gap-y-1`}>
                   <FormLabel>Date</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Date" {...field} />
-                  </FormControl>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={"outline"}
+                          className={cn(
+                            "w-full pl-3 bg-transparent hover:bg-transparent text-left font-normal",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value ? (
+                            format(field.value, "PPP")
+                          ) : (
+                            <span>Pick a date</span>
+                          )}
+                          <CalenderIcon className="ml-auto h-4 w-4" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        disabled={(date) =>
+                          date > new Date() || date < new Date("1900-01-01")
+                        }
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
 
                   <FormMessage />
                 </FormItem>

@@ -19,14 +19,19 @@ export const ColumnHeader: React.FC<{
   name: string;
   handleFilter: (props?: TUserFilter) => void;
   filterValues?: TUserFilter;
-}> = ({ name, handleFilter, filterValues }) => {
+  isActiveFilter?: boolean;
+}> = ({ name, handleFilter, filterValues, isActiveFilter = false }) => {
   return (
     <div className="flex items-center gap-2">
       <span className="uppercase text-[#545F7D] text-xs font-semibold whitespace-nowrap">
         {name}
       </span>
 
-      <FilterUsers handleSave={handleFilter} filterValues={filterValues} />
+      <FilterUsers
+        handleSave={handleFilter}
+        filterValues={filterValues}
+        isActive={isActiveFilter}
+      />
     </div>
   );
 };
@@ -47,6 +52,7 @@ const generateUserColumns = ({
         name={`Organization`}
         handleFilter={handleFilter}
         filterValues={filter}
+        isActiveFilter={filter?.organizationId !== undefined}
       />
     ),
     cell: ({ row }) => {
@@ -68,6 +74,7 @@ const generateUserColumns = ({
         name={`Username`}
         handleFilter={handleFilter}
         filterValues={filter}
+        isActiveFilter={filter?.name !== undefined}
       />
     ),
 
@@ -92,6 +99,7 @@ const generateUserColumns = ({
         name={`Email`}
         handleFilter={handleFilter}
         filterValues={filter}
+        isActiveFilter={filter?.email !== undefined}
       />
     ),
 
@@ -111,6 +119,7 @@ const generateUserColumns = ({
         name={`Phone Number`}
         handleFilter={handleFilter}
         filterValues={filter}
+        isActiveFilter={filter?.phoneNumber !== undefined}
       />
     ),
 
@@ -133,6 +142,7 @@ const generateUserColumns = ({
         name={`Date Joined`}
         handleFilter={handleFilter}
         filterValues={filter}
+        isActiveFilter={filter?.date !== undefined}
       />
     ),
 
@@ -152,6 +162,7 @@ const generateUserColumns = ({
         name={`status`}
         handleFilter={handleFilter}
         filterValues={filter}
+        isActiveFilter={filter?.status !== undefined}
       />
     ),
 

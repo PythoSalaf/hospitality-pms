@@ -9,7 +9,7 @@ export type TUserFilter = Partial<{
   name: string;
   email: string;
   phoneNumber: string;
-  date: string;
+  date: Date;
   organizationId: string;
 }>;
 export type TUserStatus = "inactive" | "pending" | "blacklisted" | "active";
