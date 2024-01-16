@@ -7,10 +7,17 @@ import {
 } from "~~/app/(auth)/_constants";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { FaBell, FaConciergeBell, FaSearch, FaUser } from "react-icons/fa";
+import {
+  FaBars,
+  FaBell,
+  FaConciergeBell,
+  FaSearch,
+  FaTimes,
+  FaUser,
+} from "react-icons/fa";
 import Link from "next/link";
 import { appRoutes } from "~~/routes";
-import { FaRegBell } from "react-icons/fa6";
+import { FaBurger, FaRegBell } from "react-icons/fa6";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Session } from "next-auth";
@@ -18,7 +25,9 @@ import { Session } from "next-auth";
 export const TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME = `md:mt-[15vh]`;
 const TopBar: React.FC<{
   session?: Session | null;
-}> = ({ session }) => {
+  isSideBarOpen?: boolean;
+  toggleSideBarOpen?: () => void;
+}> = ({ session, isSideBarOpen = false, toggleSideBarOpen }) => {
   return (
     <div
       className={`bg-white  flex items-center max-h-[15vh]  shadow-md fixed  w-full min-w-[100vw] ${GENERAL_LAYOUT_CONTAINER_PADDING} z-10`}
@@ -26,13 +35,26 @@ const TopBar: React.FC<{
       <AppLogo
         text={{
           value: ENV.APP_NAME,
-          className: "text-primary text-lg lg:text-2xl font-semibold",
+          className:
+            "text-primary hidden lg:block text-lg lg:text-2xl font-semibold",
         }}
         image={{ height: 16, width: 16 }}
         containerClassName="flex lg:gap-x-3 gap-x-2 items-center w-4/12"
       />
       <SearchBar />
       <TopActions session={session} />
+      <Button
+        variant={`ghost`}
+        size={"icon"}
+        className="md:hidden flex mx-4"
+        onClick={toggleSideBarOpen}
+      >
+        {isSideBarOpen ? (
+          <FaTimes className="text-xl" />
+        ) : (
+          <FaBars className="text-xl" />
+        )}
+      </Button>
     </div>
   );
 };
@@ -41,17 +63,17 @@ const TopActions: React.FC<{
   session?: Session | null;
 }> = ({ session }) => {
   return (
-    <div className="w-8/12 flex justify-end items-center lg:gap-x-5">
+    <div className="w-8/12 flex justify-end items-center gap-x-0.5 lg:gap-x-5">
       <Link
         href={appRoutes.documentationHome}
-        className="text-primary underline hover:no-underline underline-offset-2 font-roboto"
+        className="text-primary text-sm lg:text-base underline hover:no-underline underline-offset-2 font-roboto"
       >
         <span>Docs</span>
       </Link>
       <Button
         variant={`ghost`}
         size={"icon"}
-        className="text-xl text-primary hover:text-primary/90"
+        className="text-sm lg:text-xl text-primary hover:text-primary/90"
       >
         <FaRegBell />
       </Button>
@@ -77,22 +99,22 @@ const UserMenu: React.FC<{
   return (
     <div
       onClick={onClick}
-      className=" flex gap-x-1 items-center lg:gap-x-2 text-primary cursor-pointer"
+      className=" flex gap-x-0.5 items-center lg:gap-x-2 text-primary cursor-pointer"
     >
-      <Avatar>
+      <Avatar className="h-8 w-8 lg:w-10 lg:h-10">
         <AvatarImage src={user?.image ? user.image : undefined} />
         <AvatarFallback className="bg-secondary">
-          <FaUser className="text-white" />
+          <FaUser className="text-white text-xs lg:text-sm" />
         </AvatarFallback>
       </Avatar>
-      <span className="hidden lg:block font-semibold">{user?.name}</span>
+      <span className="hidden lg:block  font-semibold">{user?.name}</span>
       <IoMdArrowDropdown />
     </div>
   );
 };
 const SearchBar = () => {
   return (
-    <div className="w-4/12 flex ">
+    <div className=" lg:w-4/12 flex ">
       <Input
         type="search"
         placeholder={GLOBAL_SEARCH_PLACEHOLDER_TEXT}
@@ -100,9 +122,15 @@ const SearchBar = () => {
       />
       <Button
         size={`icon`}
+        className="md:hidden flex bg-transparent hover:bg-accent/90 md:rounded-tl-none md:rounded-bl-none "
+      >
+        <FaSearch className="text-primary md:text-white" />
+      </Button>
+      <Button
+        size={`icon`}
         className="hidden md:flex rounded-tl-none rounded-bl-none "
       >
-        <FaSearch />
+        <FaSearch className="text-white" />
       </Button>
     </div>
   );

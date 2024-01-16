@@ -29,7 +29,7 @@ const UserBaseInfo: React.FC<Partial<Pick<TUserDetails, "name" | "id">>> = ({
 }) => {
   return (
     <div className={`flex gap-4 items-center`}>
-      <Avatar className="lg:h-28 lg:w-28 md:w-24 md:h-24 h-18 w-18">
+      <Avatar className="lg:h-28 lg:w-28  md:w-24 md:h-24 h-24 w-24">
         <AvatarImage src="" alt="user avatar" />
         <AvatarFallback>
           <svg
