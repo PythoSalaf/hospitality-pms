@@ -18,7 +18,10 @@ const useGetUserDetails = (props: TProps) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState<TResponseData["data"]>();
-
+  const [refresh, setRefresh] = useState(false);
+  const forceRefresh = () => {
+    setRefresh((val) => !val);
+  };
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
@@ -74,13 +77,14 @@ const useGetUserDetails = (props: TProps) => {
     return () => {
       isMounted = false;
     };
-  }, [id]);
+  }, [id, refresh]);
 
   return {
     data,
     isLoading,
     isError,
     isSuccess,
+    forceRefresh,
   };
 };
 
