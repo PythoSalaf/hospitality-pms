@@ -1,6 +1,7 @@
 export type TUserGeneralDetailItem = {
   label: string;
   value?: string | number;
+  textTransform?: "uppercase" | "capitalize" | "lowercase";
 };
 
 export type TUserGeneralDetailCategoryItem = {
