@@ -12,7 +12,6 @@ export const useLoginUser = () => {
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     startTransition(() => {
-      console.log(values);
       login(values)
         .then((data) => {
           !data?.isError &&

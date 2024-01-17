@@ -12,7 +12,6 @@ export const useRegisterUser = () => {
 
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     startTransition(() => {
-      console.log(values);
       register(values)
         .then((data) => {
           !data.isError &&
