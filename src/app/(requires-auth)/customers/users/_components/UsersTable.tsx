@@ -150,9 +150,12 @@ const generateUserColumns = ({
     ),
 
     cell: ({ row }) => {
+      // TODO: Fix moment deprecated warning
       return (
         <p className="font-normal text-truncate text-sm text-muted">
-          {moment(row.original.dateJoined).format("MMMM D, YYYY h:mm A")}
+          {moment(row.original.dateJoined).isValid()
+            ? moment(row.original.dateJoined).format("MMMM D, YYYY h:mm A")
+            : ""}
         </p>
       );
     },
