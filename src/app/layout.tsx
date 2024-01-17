@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Work_Sans, Roboto } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.css";
+import "./globals.scss";
 import { Toaster } from "~~/components/ui/sonner";
 
 export const metadata: Metadata = {
