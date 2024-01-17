@@ -33,6 +33,7 @@ import {
 } from "./ui/dropdown-menu";
 import { useLogoutUser } from "~~/app/(auth)/_hooks/useLogoutUser";
 import { EXTERNAL_DOCUMENTATION_URL } from "~~/constants";
+import MobileSearch from "./MobileSearch";
 
 export const TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME = `lg:mt-[15vh]`;
 const TopBar: React.FC<{
@@ -153,25 +154,22 @@ const UserMenu: React.FC<{
 };
 const SearchBar = () => {
   return (
-    <div className=" lg:w-4/12 flex ">
-      <Input
-        type="search"
-        placeholder={GLOBAL_SEARCH_PLACEHOLDER_TEXT}
-        className="hidden lg:block  lg:w-[300px] rounded-tr-none rounded-br-none outline-none focus-visible:ring-0 focus-visible:outline-none"
-      />
-      <Button
-        size={`icon`}
-        className="lg:hidden flex bg-transparent hover:bg-accent/90 lg:rounded-tl-none lg:rounded-bl-none "
-      >
-        <FaSearch className="text-primary lg:text-white" />
-      </Button>
-      <Button
-        size={`icon`}
-        className="hidden lg:flex rounded-tl-none rounded-bl-none "
-      >
-        <FaSearch className="text-white" />
-      </Button>
-    </div>
+    <>
+      <MobileSearch />
+      <div className=" lg:w-4/12 flex ">
+        <Input
+          type="search"
+          placeholder={GLOBAL_SEARCH_PLACEHOLDER_TEXT}
+          className="hidden lg:block  lg:w-[300px] rounded-tr-none rounded-br-none outline-none focus-visible:ring-0 focus-visible:outline-none"
+        />
+        <Button
+          size={`icon`}
+          className="hidden lg:flex rounded-tl-none rounded-bl-none "
+        >
+          <FaSearch className="text-white" />
+        </Button>
+      </div>
+    </>
   );
 };
 
