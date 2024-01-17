@@ -1,3 +1,11 @@
-export default function Page() {
-  return <div>Documentation</div>;
-}
+import PageHeader from "~~/components/page/PageHeader";
+
+const Page = () => {
+  return (
+    <div>
+      <PageHeader title={{ text: "Documentation" }} />
+    </div>
+  );
+};
+
+export default Page;

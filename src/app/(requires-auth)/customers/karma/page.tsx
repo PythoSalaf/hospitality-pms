@@ -3,7 +3,7 @@ import PageHeader from "~~/components/page/PageHeader";
 const Page = () => {
   return (
     <div>
-      <PageHeader title={{ text: "Whitelist" }} />
+      <PageHeader title={{ text: "Karma" }} />
     </div>
   );
 };
