@@ -13,23 +13,23 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const avenirNext = localFont({
   src: [
     {
-      path: "./AvenirNextLTPro-It.otf",
+      path: "_fonts/AvenirNextLTPro-It.otf",
       weight: "300",
       style: "italic",
     },
     {
-      path: "./AvenirNextLTPro-Regular.otf",
+      path: "_fonts/AvenirNextLTPro-Regular.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "./AvenirNextLTPro-Bold.otf",
+      path: "_fonts/AvenirNextLTPro-Bold.otf",
       weight: "600",
       style: "semibold",
     },
 
     {
-      path: "./AvenirNextLTPro-Bold.otf",
+      path: "_fonts/AvenirNextLTPro-Bold.otf",
       weight: "700",
       style: "bold",
     },

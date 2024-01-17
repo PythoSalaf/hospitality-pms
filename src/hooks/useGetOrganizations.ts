@@ -1,20 +1,23 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState } from "react";
 import { TOrganization } from "../types";
-
-export const QUERY_KEY_FOR_ORGANIZATIONS = "users";
-export const ORG_API_URL =
-  "https://run.mocky.io/v3/90ca5ce7-80ff-4b6e-9721-f8811cf13f21";
+import { MOCK_ORGANIZATION_API_URL } from "~~/constants";
 
 export type TGetOrganizationsResponseData = {
   message: string;
   data: TOrganization[];
 };
 
+/**
+ * Fetches organizations from the mock API.
+ *
+ * @returns A Promise that resolves to the response data.
+ * @throws An error if the fetch operation fails.
+ */
 export const getOrganizations =
   async (): Promise<TGetOrganizationsResponseData> => {
-    const url = `${ORG_API_URL}`;
+    const url = `${MOCK_ORGANIZATION_API_URL}`;
 
     try {
       const res = await fetch(url);
@@ -36,22 +39,35 @@ export const getOrganizations =
     }
   };
 
+/**
+ * A custom hook for fetching organizations and managing loading state.
+ *
+ * @returns An object containing data, loading state, and error state.
+ */
 const useGetOrganizations = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState(true);
   const [isError, setIsError] = useState(true);
   const [data, setData] = useState<TOrganization[]>([]);
+
   useEffect(() => {
-    getOrganizations()
-      .then((res) => {
+    /**
+     * Fetches organizations data.
+     */
+    const fetchData = async () => {
+      try {
+        const res = await getOrganizations();
+
         setData(res.data);
         setIsLoading(false);
         setIsSuccess(true);
-      })
-      .catch(() => {
+      } catch (error) {
         setIsLoading(false);
         setIsError(true);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   return {

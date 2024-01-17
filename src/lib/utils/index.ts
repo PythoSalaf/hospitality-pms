@@ -3,10 +3,22 @@ import { twMerge } from "tailwind-merge";
 import mediaQuery from "css-mediaquery";
 export { formatNumberWithCommas } from "./number";
 
+/**
+ * Merges and deduplicates the provided class values using Tailwind CSS utilities.
+ *
+ * @param inputs - Class values to be merged.
+ * @returns Merged and deduplicated class string.
+ */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * Creates a function to match media queries based on a specified width.
+ *
+ * @param width - Width to use for media query matching.
+ * @returns Function that simulates matchMedia with the specified width.
+ */
 export const createScreenQueryMatchMedia = (width: number) => {
   return (query: string) => {
     return {
@@ -22,31 +34,33 @@ export const createScreenQueryMatchMedia = (width: number) => {
   };
 };
 
+/**
+ * Shortens a string if its length exceeds a specified maximum length.
+ *
+ * @param props - Input and optional maximum length for shortening.
+ * @returns Shortened string with ellipsis if max length is exceeded.
+ */
 export function shortenString(props: {
   input: string;
   maxLength?: number;
 }): string {
   const { input, maxLength = 12 } = props;
   if (input.length <= maxLength) {
-    return input; // No need to shorten
+    return input;
   }
 
   const ellipsis = "...";
 
-  // Ensure there's enough room for the ellipsis
   if (maxLength < ellipsis.length) {
-    return input.substr(0, maxLength); // Just truncate without ellipsis
+    return input.substring(0, maxLength);
   }
 
-  // Calculate the length of the truncated string
   const truncatedLength = maxLength - ellipsis.length;
 
-  // Get the truncated portion of the string and add ellipsis
   const truncatedString = input.substring(0, truncatedLength);
 
-  // Ensure the ellipsis doesn't get added if it's already at the end
   if (truncatedString.endsWith(" ")) {
-    return truncatedString.trim() + ellipsis; // Remove extra space before ellipsis
+    return truncatedString.trim() + ellipsis;
   }
 
   return truncatedString + ellipsis;

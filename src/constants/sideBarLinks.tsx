@@ -23,7 +23,10 @@ import {
 import { appRoutes } from "~~/routes";
 
 import { TSideBarLink, TSideBarLinkCategoryItem } from "~~/types";
-
+/**
+ * Sidebar links
+ * These are the link items that appear in the sidebar of app
+ */
 export const SIDEBAR_LINKS: TSideBarLink[] = [
   // customers
   {
@@ -149,7 +152,10 @@ export const SIDEBAR_LINKS: TSideBarLink[] = [
     category: "settings",
   },
 ];
-
+/**
+ * Sidebar link Category Items
+ * These are the sidebar links grouped by category
+ */
 export const SIDEBAR_LINK_CATEGORY_ITEMS: TSideBarLinkCategoryItem[] = [
   {
     title: "Customers",

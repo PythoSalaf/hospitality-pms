@@ -16,6 +16,7 @@ import { GENERAL_LAYOUT_CONTAINER_PADDING } from "~~/constants";
 export const SIDEBAR_WIDTH_CLASS_NAME = "lg:min-w-2/12 lg:w-[20vw]";
 const BEFORE_4_SIDEBAR_ITEM =
   " before:absolute before:py-4 before:-mt-3 before:right-0 before:left-0 before:-z-10 before:w-full md:before:w-[20vw] before:bg-highlight-lightest before:border-highlight before:border-l-8  before:content-['.'] before:text-transparent";
+
 const SideBar: React.FC<{
   isSideBarOpen?: boolean;
   toggleSideBarOpen?: () => void;

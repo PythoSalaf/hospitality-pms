@@ -3,17 +3,8 @@ import AppLogo from "./AppLogo";
 import ENV from "~~/config/enviroment";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import {
-  FaBars,
-  FaBell,
-  FaConciergeBell,
-  FaSearch,
-  FaTimes,
-  FaUser,
-} from "react-icons/fa";
-import Link from "next/link";
-import { appRoutes } from "~~/routes";
-import { FaBurger, FaRegBell } from "react-icons/fa6";
+import { FaBars, FaSearch, FaTimes, FaUser } from "react-icons/fa";
+import { FaRegBell } from "react-icons/fa6";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Session } from "next-auth";
@@ -22,9 +13,7 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useLogoutUser } from "~~/app/(auth)/_hooks/useLogoutUser";
@@ -36,6 +25,12 @@ import {
 import MobileSearch from "./MobileSearch";
 
 export const TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME = `lg:mt-[15vh]`;
+/**
+ * TopBar component for the application.
+ * @param session - User session information.
+ * @param isSideBarOpen - Flag indicating whether the sidebar is open.
+ * @param toggleSideBarOpen - Function to toggle the sidebar.
+ */
 const TopBar: React.FC<{
   session?: Session | null;
   isSideBarOpen?: boolean;
@@ -72,6 +67,10 @@ const TopBar: React.FC<{
   );
 };
 
+/**
+ * TopActions component for rendering top bar actions.
+ * @param session - User session information.
+ */
 const TopActions: React.FC<{
   session?: Session | null;
 }> = ({ session }) => {
@@ -106,6 +105,11 @@ const TopActions: React.FC<{
   );
 };
 
+/**
+ * UserMenu component for rendering the user menu in the top bar.
+ * @param user - User information.
+ * @param onClick - Callback function for click event.
+ */
 const UserMenu: React.FC<{
   user?: Pick<Session["user"], "email" | "id" | "image" | "name">;
   onClick?: () => void;
@@ -152,6 +156,10 @@ const UserMenu: React.FC<{
     </>
   );
 };
+
+/**
+ * SearchBar component for rendering the search bar in the top bar.
+ */
 const SearchBar = () => {
   return (
     <>

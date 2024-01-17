@@ -1,6 +1,10 @@
 const DEFAULT_NODE_ENV = "development";
 const DEFAULT_APP_NAME = "lendsqr";
 
+/**
+ * Object containing environment variables for the application.
+ * If an environment variable is not provided, default values are used.
+ */
 const ENV = {
   // APP
 
