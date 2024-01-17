@@ -42,7 +42,7 @@ const UserActionDropdown: React.FC<{
           <DropdownMenuItem>
             <Link
               href={`${appRoutes.customerUsers}/${user.id}`}
-              className="flex gap-x-2"
+              className="flex gap-x-2 items-center"
             >
               <svg
                 className={``}
@@ -77,7 +77,7 @@ const UserActionDropdown: React.FC<{
             disabled={user.status === "blacklisted"}
             onClick={() => setAction("blacklist")}
           >
-            <div className="flex gap-x-2 cursor-pointer">
+            <div className="flex gap-x-2 items-center cursor-pointer">
               <svg
                 className={``}
                 width="14"
@@ -105,7 +105,7 @@ const UserActionDropdown: React.FC<{
             disabled={user.status === "active"}
             onClick={() => setAction("activate")}
           >
-            <div className="flex gap-x-2 cursor-pointer">
+            <div className="flex gap-x-2 items-center cursor-pointer">
               <svg
                 className={``}
                 width="14"
