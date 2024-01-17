@@ -1,12 +1,11 @@
-import { auth, signOut } from "~~/lib/authentication/auth";
+import PageHeader from "~~/components/page/PageHeader";
 import DBContainer from "./_components/DBContainer";
 
 const Page: React.FC<{}> = () => {
-  const session = auth();
   return (
     <div>
+      <PageHeader title={{ text: "Dashboard" }} />
       <DBContainer />
-      <pre>{JSON.stringify(session, null, 2)}</pre>
     </div>
   );
 };

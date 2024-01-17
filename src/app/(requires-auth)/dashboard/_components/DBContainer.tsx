@@ -1,19 +1,8 @@
-"use client";
-
 import React from "react";
-import { useLogoutUser } from "~~/app/(auth)/_hooks/useLogoutUser";
-import { Button } from "~~/components/ui/button";
+import UsersContainer from "../../customers/users/_components/UsersContainer";
 
 const DBContainer: React.FC = () => {
-  const { onLogout, isLoading } = useLogoutUser();
-  return (
-    <div>
-      DBContainer
-      <Button onClick={() => onLogout()} loading={isLoading}>
-        Logout
-      </Button>
-    </div>
-  );
+  return <UsersContainer />;
 };
 
 export default DBContainer;
