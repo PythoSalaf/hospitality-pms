@@ -67,7 +67,7 @@ const UserActionDropdown: React.FC<{
               </svg>
 
               <span
-                className={`font-worksans font-medium text-xs text-[#545F7D]`}
+                className={`font-worksans font-medium text-sm text-[#545F7D]`}
               >
                 View Details
               </span>
@@ -95,7 +95,7 @@ const UserActionDropdown: React.FC<{
               </svg>
 
               <span
-                className={`font-worksans font-medium text-xs text-[#545F7D]`}
+                className={`font-worksans font-medium text-sm text-[#545F7D]`}
               >
                 Blacklist User
               </span>
@@ -130,7 +130,7 @@ const UserActionDropdown: React.FC<{
               </svg>
 
               <span
-                className={`font-worksans font-medium text-xs text-[#545F7D]`}
+                className={`font-worksans font-medium text-sm text-[#545F7D]`}
               >
                 Activate User
               </span>
