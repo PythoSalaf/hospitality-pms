@@ -8,13 +8,8 @@ import { GLOBAL_SEARCH_PLACEHOLDER_TEXT } from "~~/app/(auth)/_constants";
 const MobileSearch = () => {
   return (
     <Dialog>
-      <DialogTrigger>
-        <Button
-          size={`icon`}
-          className="lg:hidden flex bg-transparent hover:bg-accent/90 lg:rounded-tl-none lg:rounded-bl-none "
-        >
-          <FaSearch className="text-primary lg:text-white" />
-        </Button>
+      <DialogTrigger className="lg:hidden flex bg-transparent hover:bg-accent/90 py-3 px-3 rounded-md">
+        <FaSearch className="text-primary lg:text-white " />
       </DialogTrigger>
       {/* </Button> */}
       <DialogContent className={`pt-6`}>
