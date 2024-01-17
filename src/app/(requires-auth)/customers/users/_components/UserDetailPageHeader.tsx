@@ -17,8 +17,8 @@ const UserDetailPageHeader: React.FC<{
     <PageHeader
       title={{ text: "User Details" }}
       actions={[
-        <BlacklistBtn user={data} onBlacklist={onCompleteAction} />,
-        <ActivateUserBtn user={data} onActivate={onCompleteAction} />,
+        <BlacklistBtn user={data} onBlacklist={onCompleteAction} key={1} />,
+        <ActivateUserBtn user={data} onActivate={onCompleteAction} key={2} />,
       ]}
     />
   );

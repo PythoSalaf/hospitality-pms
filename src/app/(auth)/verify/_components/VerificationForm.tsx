@@ -43,7 +43,7 @@ const VerificationForm = () => {
         description: "Please provide a valid email address",
       });
     }
-  }, [token, email]);
+  }, [token, email, onSubmit]);
   return (
     <AuthContainer
       title="Verification!"

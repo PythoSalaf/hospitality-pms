@@ -68,7 +68,7 @@ const UserTier: React.FC<Partial<Pick<TUserDetails, "userTier">>> = ({
 
   return (
     <div className={`flex flex-col items-start border-l border-r px-12`}>
-      <p className={`text-muted`}>User's Tier</p>
+      <p className={`text-muted`}>{`User's Tier`}</p>
       <div className={`mt-2`}>
         <StarPicker
           value={rating}

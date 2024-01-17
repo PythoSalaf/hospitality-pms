@@ -26,6 +26,7 @@ interface IProps {
   filter?: TUserFilter;
 }
 export const getUsers = async (props: IProps = {}): Promise<TResponseData> => {
+  const { pagination, filter } = props;
   // TODO: Create an API that emulates a DB, so that it is properly done
   const url = `${USERS_API_URL}`;
   const existingLocalStorageUsers = localStorage.getItem(
@@ -62,12 +63,12 @@ export const getUsers = async (props: IProps = {}): Promise<TResponseData> => {
     );
 
     const filteredData = data.filter((item) =>
-      matchUserToFilterParams(item, props.filter)
+      matchUserToFilterParams(item, filter)
     );
     const paginatedData = paginateUsers(
       filteredData,
-      props.pagination?.limit,
-      props.pagination?.page
+      pagination?.limit,
+      pagination?.page
     );
 
     return {
@@ -84,6 +85,7 @@ export const getUsers = async (props: IProps = {}): Promise<TResponseData> => {
 };
 
 const useGetUsers = (props: IProps = {}) => {
+  const { pagination, filter } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -99,7 +101,7 @@ const useGetUsers = (props: IProps = {}) => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const res = await getUsers(props);
+        const res = await getUsers({ filter, pagination });
 
         if (isMounted) {
           setData(res.data);
@@ -122,7 +124,7 @@ const useGetUsers = (props: IProps = {}) => {
     return () => {
       isMounted = false;
     };
-  }, [props.pagination?.page, props.pagination?.limit, props?.filter, refresh]); // Empty dependency array ensures that this effect runs only once
+  }, [pagination, filter, refresh]); // Empty dependency array ensures that this effect runs only once
 
   return {
     data,
