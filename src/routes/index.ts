@@ -5,6 +5,7 @@ import {
   documentationRoutes,
   errorRoutes,
   settingRoutes,
+  businessRoutes,
 } from "./pages";
 
 export { authRoutes };
@@ -37,6 +38,7 @@ export const authProtectedRoutes = {
   newPassword: "/new-password",
   dashboard: "/dashboard",
   ...customerRoutes,
+  ...businessRoutes,
   ...apiV1ProtectedRoutes,
   ...settingRoutes,
 };

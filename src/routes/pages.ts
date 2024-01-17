@@ -20,9 +20,9 @@ export const errorRoutes = {
  * Setting Routes
  */
 export const settingRoutes = {
-  auditLogs: "/settings/audit-logs",
-  feesAndPricing: "/settings/fees-and-pricing",
-  preferences: "/settings/preferences",
+  settingAuditLogs: "/settings/audit-logs",
+  settingFeesAndPricing: "/settings/fees-and-pricing",
+  settingPreferences: "/settings/preferences",
 };
 /**
  * docmentation Routes
@@ -35,7 +35,25 @@ export const documentationRoutes = {
  */
 export const customerRoutes = {
   customerUsers: "/customers/users",
+  customerLoans: "/customers/loans",
+  customerSavings: "/customers/savings",
+  customerLoanRequests: "/customers/loan-requests",
+  customerWhitelist: "/customers/whitelist",
   customerDecisionModels: "/customers/decision-models",
   customerKarma: "/customers/karma",
   customerGuarantors: "/customers/guarantors",
+};
+/**
+ * bussiness Routes
+ */
+export const businessRoutes = {
+  businessOrganizations: "/business/organizations",
+  businessLoanProducts: "/business/loan-products",
+  businessSavingsProducts: "/business/savings-products",
+  businessFeesAndCharges: "/business/fees-and-charges",
+  businessTransactions: "/business/transactions",
+  businessServices: "/business/services",
+  businessServiceAccount: "/business/service-account",
+  businessSettlements: "/business/settlements",
+  businessReports: "/business/reports",
 };
