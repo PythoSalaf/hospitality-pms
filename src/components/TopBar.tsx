@@ -32,6 +32,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useLogoutUser } from "~~/app/(auth)/_hooks/useLogoutUser";
+import { EXTERNAL_DOCUMENTATION_URL } from "~~/constants";
 
 export const TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME = `lg:mt-[15vh]`;
 const TopBar: React.FC<{
@@ -75,12 +76,13 @@ const TopActions: React.FC<{
 }> = ({ session }) => {
   return (
     <div className="w-8/12 flex justify-end items-center gap-x-0.5 lg:gap-x-5">
-      <Link
-        href={appRoutes.documentationHome}
+      <a
+        href={EXTERNAL_DOCUMENTATION_URL}
+        target="_blank"
         className="text-primary text-sm lg:text-base underline hover:no-underline underline-offset-2 font-roboto"
       >
         <span>Docs</span>
-      </Link>
+      </a>
       <Button
         variant={`ghost`}
         size={"icon"}
