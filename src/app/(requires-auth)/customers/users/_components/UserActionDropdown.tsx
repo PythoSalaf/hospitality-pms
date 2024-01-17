@@ -1,4 +1,3 @@
-import { Button } from "~~/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,10 +34,8 @@ const UserActionDropdown: React.FC<{
       />
       <DropdownMenu defaultOpen={action === undefined ? undefined : false}>
         {/* defaultOpen prop is done as above so that it closes dropdown menu when an action modal is present */}
-        <DropdownMenuTrigger>
-          <Button variant="ghost" className="h-8 w-8 p-0">
-            <AiOutlineMore className="h-4 w-4" />
-          </Button>
+        <DropdownMenuTrigger className="h-8 w-8 p-0">
+          <AiOutlineMore className="h-4 w-4" />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-44 py-3">
           <DropdownMenuItem>
