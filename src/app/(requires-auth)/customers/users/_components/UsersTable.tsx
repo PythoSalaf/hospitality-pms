@@ -23,7 +23,7 @@ export const ColumnHeader: React.FC<{
 }> = ({ name, handleFilter, filterValues, isActiveFilter = false }) => {
   return (
     <div className="flex items-center gap-2">
-      <span className="uppercase text-[#545F7D] text-sm font-semibold whitespace-nowrap">
+      <span className="uppercase text-muted text-sm font-semibold whitespace-nowrap">
         {name}
       </span>
 
@@ -58,7 +58,7 @@ const generateUserColumns = ({
     cell: ({ row }) => {
       return (
         <p
-          className="font-normal text-truncate text-sm text-[#545F7D]"
+          className="font-normal text-truncate text-sm text-muted"
           title={row.original.organization.name}
         >
           {row.original.organization.name}
@@ -82,7 +82,7 @@ const generateUserColumns = ({
       return (
         <Link href={`${appRoutes.customerUsers}/${row.original.id}`}>
           <p
-            className="font-normal text-truncate text-sm text-[#545F7D] hover:text-primary hover:underline underline-offset-2"
+            className="font-normal text-truncate text-sm text-muted hover:text-primary hover:underline underline-offset-2"
             title={row.original.name}
           >
             {row.original.name}
@@ -106,7 +106,7 @@ const generateUserColumns = ({
     cell: ({ row }) => {
       return (
         <p
-          className="font-normal text-truncate text-sm text-[#545F7D] "
+          className="font-normal text-truncate text-sm text-muted "
           title={row.original.email}
         >
           {row.original.email}
@@ -129,7 +129,7 @@ const generateUserColumns = ({
     cell: ({ row }) => {
       return (
         <p
-          className="font-normal text-truncate text-sm text-ellipsis text-[#545F7D]"
+          className="font-normal text-truncate text-sm text-ellipsis text-muted"
           title={row.original.phoneNumber}
         >
           {row.original.phoneNumber}
@@ -151,7 +151,7 @@ const generateUserColumns = ({
 
     cell: ({ row }) => {
       return (
-        <p className="font-normal text-truncate text-sm text-[#545F7D]">
+        <p className="font-normal text-truncate text-sm text-muted">
           {moment(row.original.dateJoined).format("MMMM D, YYYY h:mm A")}
         </p>
       );

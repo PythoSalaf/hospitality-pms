@@ -12,7 +12,7 @@ const PageGoBack: React.FC<{ url: string; text?: string }> = ({
           className={`group  w-max flex gap-2 items-center md:justify-start justify-end mt-4`}
         >
           <svg
-            className={`group-hover:fill-highlight fill-[#545F7D]`}
+            className={`group-hover:fill-highlight fill-muted`}
             width="30"
             height="30"
             viewBox="0 0 30 30"
@@ -24,7 +24,7 @@ const PageGoBack: React.FC<{ url: string; text?: string }> = ({
               // fill="#545F7D"
             />
           </svg>
-          <span className={`text-[#545F7D] group-hover:text-highlight`}>
+          <span className={`text-muted group-hover:text-highlight`}>
             {text}
           </span>
         </div>

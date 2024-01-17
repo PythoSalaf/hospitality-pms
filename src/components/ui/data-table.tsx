@@ -162,7 +162,7 @@ export function DataTable<TData, TValue>({
           <div className="h-2" />
           <div className="flex items-center gap-2">
             <RCPagination
-              className="flex gap-2 items-center font-worksans text-sm cursor-pointer text-[#545F7D]"
+              className="flex gap-2 items-center font-worksans text-sm cursor-pointer text-muted"
               total={total}
               onChange={(pageIndex, pageSize) => {
                 if (onPaginationChange) {
@@ -196,7 +196,7 @@ export function DataTable<TData, TValue>({
                 if (type === "page") {
                   return (
                     <span
-                      className={`text-[#545F7D] ${
+                      className={`text-muted ${
                         typeof pagination?.pageIndex === "number" &&
                         pagination?.pageIndex + 1 === item
                           ? "font-bold"

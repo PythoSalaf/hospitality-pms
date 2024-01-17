@@ -29,7 +29,7 @@ const UserBaseInfo: React.FC<Partial<Pick<TUserDetails, "name" | "id">>> = ({
 }) => {
   return (
     <div className={`flex gap-4 items-center`}>
-      <Avatar className="lg:h-28 lg:w-28  md:w-24 md:h-24 h-24 w-24">
+      <Avatar className="lg:h-28 lg:w-28 md:w-24 md:h-24 h-24 w-24">
         <AvatarImage src="" alt="user avatar" />
         <AvatarFallback>
           <svg
@@ -53,7 +53,7 @@ const UserBaseInfo: React.FC<Partial<Pick<TUserDetails, "name" | "id">>> = ({
         <h2 className="text-lg font-medium md:text-xl lg:text-2xl text-primary">
           {name}
         </h2>
-        <p className={`text-[#545F7D] mt-2`}>{id}</p>
+        <p className={`text-muted mt-2`}>{id}</p>
       </div>
     </div>
   );
@@ -68,7 +68,7 @@ const UserTier: React.FC<Partial<Pick<TUserDetails, "userTier">>> = ({
 
   return (
     <div className={`flex flex-col items-start border-l border-r px-12`}>
-      <p className={`text-[#545F7D]`}>User's Tier</p>
+      <p className={`text-muted`}>User's Tier</p>
       <div className={`mt-2`}>
         <StarPicker
           value={rating}
@@ -87,7 +87,7 @@ const UserAcc: React.FC<Partial<Pick<TUserDetails, "account">>> = ({
 }) => {
   return (
     <div>
-      <h2 className=" text-lg font-medium  lg:text-2xl text-[#213F7D]">
+      <h2 className=" text-lg font-medium  lg:text-2xl text-primary">
         ₦{formatNumberWithCommas(account?.balance)}
       </h2>
       <p className={`text-primary mt-2`}>

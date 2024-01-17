@@ -65,9 +65,7 @@ export const UserCard: React.FC<UserCardProps> = ({
             {icon}
           </div>
         </CardTitle>
-        <p
-          className={`uppercase text-sm text-[#545F7D] font-worksans font-medium`}
-        >
+        <p className={`uppercase text-sm text-muted font-worksans font-medium`}>
           {title}
         </p>
         <span className={`font-semibold text-primary text-2xl font-worksans`}>

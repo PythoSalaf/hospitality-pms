@@ -12,7 +12,7 @@ const GeneralDetails: React.FC<TProps> = ({ data }) => {
   const categoryItems = generateUserGeneralDetailCategoryItems(data);
   return (
     <Card>
-      <CardContent className="space-y-14 my-8 truncate ">
+      <CardContent className="space-y-14 my-8">
         {categoryItems.map(
           (
             {
@@ -37,16 +37,14 @@ const GeneralDetails: React.FC<TProps> = ({ data }) => {
                 <div className={`grid ${gridClassName} gap-y-8`}>
                   {items.map((detail, i) => (
                     <div key={i} className={`flex flex-col gap-2`}>
-                      <p
-                        className={`text-sm uppercase font-normal text-[#545F7D]`}
-                      >
+                      <p className={`text-sm uppercase font-normal text-muted`}>
                         {(detail as unknown as TUserGeneralDetailItem).label}
                       </p>
                       <p
                         className={`text-base ${
                           (detail as unknown as TUserGeneralDetailItem)
                             .textTransform ?? "capitalize"
-                        } font-medium text-[#545F7D]`}
+                        } font-medium text-muted truncate`}
                       >
                         {(detail as unknown as TUserGeneralDetailItem).value}
                       </p>
@@ -70,14 +68,14 @@ const GeneralDetails: React.FC<TProps> = ({ data }) => {
                         (innerDetail, j) => (
                           <div key={j} className={`flex flex-col gap-2`}>
                             <p
-                              className={`text-sm uppercase font-normal text-[#545F7D]`}
+                              className={`text-sm uppercase font-normal text-muted`}
                             >
                               {innerDetail.label}
                             </p>
                             <p
                               className={`text-base ${
                                 innerDetail.textTransform ?? "capitalize"
-                              } font-medium text-[#545F7D]`}
+                              } font-medium text-muted truncate`}
                             >
                               {innerDetail.value}
                             </p>

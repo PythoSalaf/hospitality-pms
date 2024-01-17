@@ -68,7 +68,7 @@ const SideBar: React.FC<{
         <div className={``}>
           {SIDEBAR_LINK_CATEGORY_ITEMS.map((category, i) => (
             <div className=" mb-6" key={i}>
-              <h2 className="relative text-sm font-worksans text-[#545F7D] font-medium tracking-tight uppercase mb-4">
+              <h2 className="relative text-sm font-worksans text-muted font-medium tracking-tight uppercase mb-4">
                 {category.title}
               </h2>
               <div className="space-y-1 flex flex-col gap-y-3">
