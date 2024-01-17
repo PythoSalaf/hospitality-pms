@@ -21,6 +21,17 @@ import { FaBurger, FaRegBell } from "react-icons/fa6";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Session } from "next-auth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { useLogoutUser } from "~~/app/(auth)/_hooks/useLogoutUser";
 
 export const TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME = `lg:mt-[15vh]`;
 const TopBar: React.FC<{
@@ -96,20 +107,46 @@ const UserMenu: React.FC<{
   user?: Pick<Session["user"], "email" | "id" | "image" | "name">;
   onClick?: () => void;
 }> = ({ user, onClick }) => {
+  const { onLogout, isLoading } = useLogoutUser();
+
   return (
-    <div
-      onClick={onClick}
-      className=" flex gap-x-0.5 items-center lg:gap-x-2 text-primary cursor-pointer"
-    >
-      <Avatar className="h-8 w-8 lg:w-10 lg:h-10">
-        <AvatarImage src={user?.image ? user.image : undefined} />
-        <AvatarFallback className="bg-secondary">
-          <FaUser className="text-white text-xs lg:text-sm" />
-        </AvatarFallback>
-      </Avatar>
-      <span className="hidden lg:block  font-semibold">{user?.name}</span>
-      <IoMdArrowDropdown />
-    </div>
+    <>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <div
+            onClick={onClick}
+            className=" flex gap-x-0.5 items-center lg:gap-x-2 text-primary cursor-pointer"
+          >
+            <Avatar className="h-8 w-8 lg:w-10 lg:h-10">
+              <AvatarImage src={user?.image ? user.image : undefined} />
+              <AvatarFallback className="bg-secondary">
+                <FaUser className="text-white text-xs lg:text-sm" />
+              </AvatarFallback>
+            </Avatar>
+            <span className="hidden lg:block  font-semibold">{user?.name}</span>
+            <IoMdArrowDropdown />
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56" align="end" forceMount>
+          <DropdownMenuGroup>
+            {["Add Organization", "Billing", "Setting"].map((item, i) => (
+              <DropdownMenuItem key={i}>{item}</DropdownMenuItem>
+            ))}
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            {" "}
+            <Button
+              onClick={() => onLogout()}
+              className="w-full"
+              loading={isLoading}
+            >
+              Logout
+            </Button>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
   );
 };
 const SearchBar = () => {
