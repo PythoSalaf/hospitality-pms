@@ -108,4 +108,4 @@ yarn build # using yarn
 
 ## Documentation
 
-The application documentation is available on the [Lendqr documentation](https://carnation-bladder-b2b.notion.site/Lendsqr-Assessment-2be98206dfbd4b128b118d8516e26e2f?pvs=4). It should be noted that the source code is also documentated via docstring comments.
+The application documentation is available on the [Lendqr documentation](https://carnation-bladder-b2b.notion.site/Lendsqr-Assessment-2be98206dfbd4b128b118d8516e26e2f?pvs=4). It should be noted that the source code is also documentated via docstring comments and typescript type definitions.
