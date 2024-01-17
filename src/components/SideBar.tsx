@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { GENERAL_LAYOUT_CONTAINER_PADDING } from "~~/app/(auth)/_constants";
 import { OrganizationSelector } from "./SelectOrganization";
 import Link from "next/link";
 import { TSideBarLink } from "~~/types";
@@ -12,6 +11,7 @@ import HomeIcon from "./icons/HomeIcon";
 import { usePathname } from "next/navigation";
 import { cn } from "~~/lib/utils";
 import { FaTimes } from "react-icons/fa";
+import { GENERAL_LAYOUT_CONTAINER_PADDING } from "~~/constants";
 
 export const SIDEBAR_WIDTH_CLASS_NAME = "lg:min-w-2/12 lg:w-[20vw]";
 const BEFORE_4_SIDEBAR_ITEM =

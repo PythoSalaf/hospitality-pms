@@ -1,10 +1,6 @@
 import React from "react";
 import AppLogo from "./AppLogo";
 import ENV from "~~/config/enviroment";
-import {
-  GENERAL_LAYOUT_CONTAINER_PADDING,
-  GLOBAL_SEARCH_PLACEHOLDER_TEXT,
-} from "~~/app/(auth)/_constants";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import {
@@ -32,7 +28,11 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useLogoutUser } from "~~/app/(auth)/_hooks/useLogoutUser";
-import { EXTERNAL_DOCUMENTATION_URL } from "~~/constants";
+import {
+  EXTERNAL_DOCUMENTATION_URL,
+  GENERAL_LAYOUT_CONTAINER_PADDING,
+  GLOBAL_SEARCH_PLACEHOLDER_TEXT,
+} from "~~/constants";
 import MobileSearch from "./MobileSearch";
 
 export const TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME = `lg:mt-[15vh]`;

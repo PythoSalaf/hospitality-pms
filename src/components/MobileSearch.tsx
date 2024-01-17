@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import { FaSearch } from "react-icons/fa";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { GLOBAL_SEARCH_PLACEHOLDER_TEXT } from "~~/app/(auth)/_constants";
+import { GLOBAL_SEARCH_PLACEHOLDER_TEXT } from "~~/constants";
 
 const MobileSearch = () => {
   return (
