@@ -1,4 +1,5 @@
 import { TUserGeneralDetailCategoryItem, TUserStatus } from "../_types";
+export { DUMMY_USERS } from "./dummy-users";
 
 export const USER_STATUS_OPTIONS: TUserStatus[] = [
   "inactive",
