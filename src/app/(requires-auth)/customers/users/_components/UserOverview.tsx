@@ -7,14 +7,16 @@ import { TUserDetails } from "../_types";
 import SkeletonLoader from "~~/components/loader/SkeletonLoader";
 
 const UserOverview: React.FC<{
-  data?: Pick<TUserDetails, "name" | "id" | "userTier" | "account">;
+  data?: Pick<TUserDetails, "name" | "id" | "userTier" | "account" | "image">;
   isLoading?: boolean;
 }> = ({ data, isLoading }) => {
   return (
     <Card className={`rounded-br-none rounded-bl-none border-b-0`}>
       <CardContent className=" flex gap-12 md:flex-row items-start flex-wrap space-y-6 mt-6 pb-12">
-        <SkeletonLoader loading={isLoading}>
-          <UserBaseInfo {...{ name: data?.name, id: data?.id }} />
+        <SkeletonLoader loading={isLoading} paragraph={{ rows: 5 }}>
+          <UserBaseInfo
+            {...{ name: data?.name, id: data?.id, image: data?.image }}
+          />
           <UserTier {...{ userTier: data?.userTier }} />
           <UserAcc {...{ account: data?.account }} />
         </SkeletonLoader>
@@ -23,14 +25,15 @@ const UserOverview: React.FC<{
   );
 };
 
-const UserBaseInfo: React.FC<Partial<Pick<TUserDetails, "name" | "id">>> = ({
-  name,
-  id,
-}) => {
+const UserBaseInfo: React.FC<
+  Partial<Pick<TUserDetails, "name" | "id" | "image">>
+> = ({ name, id, image }) => {
   return (
-    <div className={`flex gap-4 items-center`}>
+    <div
+      className={`flex flex-col text-center w-full lg:w-max lg:text-right lg:flex-row gap-4 items-center`}
+    >
       <Avatar className="lg:h-28 lg:w-28 md:w-24 md:h-24 h-24 w-24">
-        <AvatarImage src="" alt="user avatar" />
+        <AvatarImage src={image} alt="user avatar" />
         <AvatarFallback>
           <svg
             width="40"
@@ -67,7 +70,9 @@ const UserTier: React.FC<Partial<Pick<TUserDetails, "userTier">>> = ({
   }, [userTier]);
 
   return (
-    <div className={`flex flex-col items-start border-l border-r px-12`}>
+    <div
+      className={`flex-1 lg:flex-none items-center lg:items-start  flex flex-col border-l border-r px-12`}
+    >
       <p className={`text-muted`}>{`User's Tier`}</p>
       <div className={`mt-2`}>
         <StarPicker
@@ -86,7 +91,7 @@ const UserAcc: React.FC<Partial<Pick<TUserDetails, "account">>> = ({
   account,
 }) => {
   return (
-    <div>
+    <div className="flex-1 lg:flex-none items-center lg:items-start text-center lg:text-right  flex flex-col">
       <h2 className=" text-lg font-medium  lg:text-2xl text-primary">
         ₦{formatNumberWithCommas(account?.balance)}
       </h2>
