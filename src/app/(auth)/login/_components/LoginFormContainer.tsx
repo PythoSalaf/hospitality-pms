@@ -1,3 +1,5 @@
+"use client";
+
 import { useLoginUser } from "../_hooks/useLoginUser";
 import LoginForm from "./LoginForm";
 
