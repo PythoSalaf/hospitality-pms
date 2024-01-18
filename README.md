@@ -1,6 +1,6 @@
 # Lendsqr Finance
 
-This application helps you manage your lending and borrowing activities. The deployed application can be found on [lendsqr.finance](http://isaac-odeh-lendsqr-fe-test.vercel.app/).
+This application helps you manage your lending and borrowing activities. The deployed application can be found on [lendsqr.finance](https://isaac-odeh-lendsqr-fe-test.vercel.app/).
 
 ## Table of Contents
 
