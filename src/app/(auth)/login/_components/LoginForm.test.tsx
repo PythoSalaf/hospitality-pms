@@ -8,7 +8,7 @@ import { z } from "zod";
 import { GENERAL_PASSWORD_REGEX } from "../../_constants";
 
 describe("LoginForm", () => {
-  it("Should render a form containing an email input, password input, register link, fogot password link and login btn", () => {
+  it("Should render a form containing an email input, password input, fogot password link and login btn", () => {
     const { screen } = renderWithReactHookForm({
       ui: <LoginForm onSubmit={() => {}} />,
     });
@@ -23,11 +23,7 @@ describe("LoginForm", () => {
     expect(passwordInput).toBeInTheDocument();
     expect(passwordInput).toHaveValue("");
     expect(passwordInput).toHaveAttribute("role", "password");
-    const registerLink = screen.getByRole("link", {
-      name: /register/i,
-    });
-    expect(registerLink).toBeInTheDocument();
-    expect(registerLink).toHaveAttribute("href", appRoutes.register);
+
     const forgotPasswordLink = screen.getByRole("link", {
       name: /forgot password/i,
     });
