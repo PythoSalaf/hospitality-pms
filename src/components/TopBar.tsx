@@ -23,6 +23,7 @@ import {
   GLOBAL_SEARCH_PLACEHOLDER_TEXT,
 } from "~~/constants";
 import MobileSearch from "./MobileSearch";
+import { cn } from "~~/lib/utils";
 
 export const TOPBAR_ACCOMODATION_WIDTH_CLASS_NAME = `lg:mt-[15vh]`;
 /**
@@ -38,7 +39,9 @@ const TopBar: React.FC<{
 }> = ({ session, isSideBarOpen = false, toggleSideBarOpen }) => {
   return (
     <div
-      className={`bg-white  flex items-center max-h-[15vh]  shadow-md fixed  w-full min-w-[100vw] ${GENERAL_LAYOUT_CONTAINER_PADDING} z-10`}
+      className={cn([
+        `bg-white  flex items-center max-h-[15vh]  shadow-md fixed  w-full min-w-[100vw] ${GENERAL_LAYOUT_CONTAINER_PADDING} lg:pr-10 z-10`,
+      ])}
     >
       <AppLogo
         text={{
