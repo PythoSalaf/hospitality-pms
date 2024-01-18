@@ -10,7 +10,7 @@ import { LOCAL_STORAGE_KEY_FOR_USERS } from "../_constants";
 import { faker } from "@faker-js/faker";
 
 const USERS_API_URL =
-  "https://run.mocky.io/v3/32064e83-fd95-4ac7-ace7-19568daaa806";
+  "https://run.mocky.io/v3/ef0b6bab-6a24-4314-9cae-f60e0e40c460";
 
 type TResponseData = {
   message: string;
@@ -41,12 +41,7 @@ export const getUsers = async (props: IProps = {}): Promise<TResponseData> => {
         throw new Error(`Failed to fetch data. Status: ${res?.status}`);
       }
 
-      let _data = (await res.json()) as unknown as TUserDetails[];
-      data = _data.map((user) => ({
-        ...user,
-        dateJoined: faker.date.past().toDateString(),
-        dob: faker.date.birthdate().toDateString(),
-      }));
+      data = (await res.json()) as unknown as TUserDetails[];
     }
     // store in local storage, according to requirements
     // TODO: refactor to be in its own function, also on visit to user details check n insert if not present
