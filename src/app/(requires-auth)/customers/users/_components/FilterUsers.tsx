@@ -73,7 +73,7 @@ const FilterUsers: React.FC<{
   return (
     <Dialog>
       {/* <Button variant={`ghost`} size={`icon`}> */}
-      <DialogTrigger data-testid="filter-user">
+      <DialogTrigger>
         <FilterResultIcon pathFill={isActive ? "#39CDCC" : undefined} />
       </DialogTrigger>
       {/* </Button> */}
