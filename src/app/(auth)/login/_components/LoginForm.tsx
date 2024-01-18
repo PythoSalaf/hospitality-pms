@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import {
@@ -17,7 +17,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "~~/components/ui/button";
 import Link from "next/link";
 import { appRoutes } from "~~/routes";
-import { useLoginUser } from "../_hooks/useLoginUser";
 
 const LoginForm: React.FC<{
   onSubmit: (values: z.infer<typeof LoginSchema>) => void;
@@ -34,7 +33,11 @@ const LoginForm: React.FC<{
   const [showPwd, setShowPwd] = useState(false);
   return (
     <Form {..._form}>
-      <form onSubmit={_form.handleSubmit(onSubmit)} className="space-y-6">
+      <form
+        onSubmit={_form.handleSubmit(onSubmit)}
+        role="form"
+        className="space-y-6"
+      >
         <div className="space-y-4">
           <FormField
             control={_form.control}
@@ -47,6 +50,7 @@ const LoginForm: React.FC<{
                     disabled={isPending}
                     placeholder="Email"
                     type="email"
+                    role="email"
                   />
                 </FormControl>
                 <FormMessage />
@@ -66,6 +70,7 @@ const LoginForm: React.FC<{
                     type={showPwd ? "text" : "password"}
                     isPassword
                     onShowPassword={() => setShowPwd((val) => !val)}
+                    role="password"
                   />
                 </FormControl>
                 <FormMessage />
@@ -93,11 +98,6 @@ const LoginForm: React.FC<{
       </form>{" "}
     </Form>
   );
-};
-
-export const LoginFormContainer = () => {
-  const { onSubmit, isLoading } = useLoginUser();
-  return <LoginForm onSubmit={onSubmit} isLoading={isLoading} />;
 };
 
 export default LoginForm;

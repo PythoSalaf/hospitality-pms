@@ -3,7 +3,7 @@ import { GENERAL_PASSWORD_REGEX } from "../../_constants";
 
 export const LoginSchema = z.object({
   email: z.string().email({
-    message: "Email is required",
+    message: "Please input a valid email",
   }),
   password: z
     .string()
