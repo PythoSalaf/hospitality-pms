@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { LOCAL_STORAGE_KEY_FOR_USERS } from "../_constants";
 import { faker } from "@faker-js/faker";
 
-export const QUERY_KEY_FOR_USERS = "users";
 const USERS_API_URL =
   "https://run.mocky.io/v3/32064e83-fd95-4ac7-ace7-19568daaa806";
 
@@ -26,7 +25,6 @@ interface IProps {
   filter?: TUserFilter;
 }
 export const getUsers = async (props: IProps = {}): Promise<TResponseData> => {
-  // TODO: Create an API that emulates a DB, so that it is properly done
   const url = `${USERS_API_URL}`;
   const existingLocalStorageUsers = localStorage.getItem(
     LOCAL_STORAGE_KEY_FOR_USERS
@@ -93,7 +91,8 @@ const useGetUsers = (props: IProps = {}) => {
     setRefresh((val) => !val);
   };
   useEffect(() => {
-    // Define a cleanup function to avoid setting state on an unmounted component
+    // TODO: Refactor hook to prevent unnecessary rerenders
+
     let isMounted = true;
 
     const fetchData = async () => {
