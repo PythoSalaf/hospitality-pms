@@ -173,7 +173,7 @@ export function DataTable<TData, TValue>({
               pageSize={table.getState().pagination.pageSize}
               prevIcon={
                 <Button
-                  className={`bg-[#213F7D1A]  hover:bg-white p-1 h-6 `}
+                  className={`bg-[#213F7D1A]  hover:bg-white p-0.5 h-8 `}
                   size={`icon`}
                 >
                   <svg
@@ -215,7 +215,7 @@ export function DataTable<TData, TValue>({
               }}
               nextIcon={
                 <Button
-                  className={`bg-[#213F7D1A]  hover:bg-white  p-1 h-6 `}
+                  className={`bg-[#213F7D1A]  hover:bg-white  p-0.5 h-8 `}
                   size={`icon`}
                 >
                   <svg
