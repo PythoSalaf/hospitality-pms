@@ -4,7 +4,7 @@ export const WRONG_CREDENTIALS = {
 };
 export const CORRECT_CREDENTIALS = {
   email: "tester@lendsqr.com",
-  password: "Lender123$",
+  password: "Lendsqr123$",
 };
 
 export const PENDING_USER_ID = "6510fb769495301acef683ed"; //Please ensure that is the id of someone whose status is not blacklisted
