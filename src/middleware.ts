@@ -17,7 +17,7 @@ export default auth((req) => {
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthRoutePrefix);
   const isAuthRoute = Object.values(authRoutes).includes(nextUrl.pathname);
-  const isAuthProtectedRoute = !!Object.values(authProtectedRoutes).find(
+  const isAuthProtectedRoute = Object.values(authProtectedRoutes).find(
     (route) =>
       nextUrl.pathname.startsWith(route) ||
       route === nextUrl.pathname ||
