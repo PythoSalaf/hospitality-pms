@@ -3,6 +3,34 @@ import { createScreenQueryMatchMedia } from "../utils";
 import { FormProvider, useForm } from "react-hook-form";
 import { render, RenderOptions } from "@testing-library/react";
 import React, { FC, ReactElement } from "react";
+
+/**
+ * Creates a mock Fetch API response object for testing purposes.
+ *
+ * @param {Object} props - The properties to configure the mock response.
+ * @param {unknown} props.data - The data to be resolved when calling `json()` on the response.
+ * @param {Partial<Response>} [props.response={}] - Additional response properties (e.g., status, statusText).
+ * @returns {Object} - A mock Fetch API response object.
+ */
+export const createMockFetchResponse = (props: {
+  data: unknown;
+  response?: Partial<Response>;
+}) => {
+  const { data, response = {} } = props;
+  const { ok, status, statusText, url } = response;
+  return {
+    json: () => Promise.resolve(data), // Return a promise that resolves with the provided data
+
+    ok, // Indicate that the response is "OK"
+    redirected: false, // Indicate that the response is not redirected
+    headers: {
+      "content-type": "application/json",
+    },
+    status, // Set the status code to 200 for a successful response
+    statusText, // Set the status text to "OK"
+    url,
+  };
+};
 /**
  * Resizes the screen size to the specified width for testing purposes.
  *
