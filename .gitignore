@@ -2,6 +2,9 @@
 # developer items
 LEARNING_GUIDE.ts
 
+# local prisma files
+/prisma/___local_migrations
+
 
 # dependencies
 /node_modules
