@@ -3,7 +3,7 @@ export const WRONG_CREDENTIALS = {
   password: "Password123$",
 };
 export const CORRECT_CREDENTIALS = {
-  email: "thisbroisfresh@gmail.com",
+  email: "tester@lendsqr.com",
   password: "Lender123$",
 };
 
