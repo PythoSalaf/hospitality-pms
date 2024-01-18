@@ -18,7 +18,7 @@ const GeneralDetails: React.FC<TProps> = ({ data }) => {
             {
               title,
               items,
-              gridClassName = "md:grid-cols-5 grid-cols-2 gap-x-4",
+              gridClassName = "lg:grid-cols-5 grid-cols-1 md:grid-cols-2 gap-x-4",
             },
             x
           ) => (
