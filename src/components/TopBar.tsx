@@ -56,6 +56,7 @@ const TopBar: React.FC<{
         size={"icon"}
         className="lg:hidden flex mx-4"
         onClick={toggleSideBarOpen}
+        data-testid="toggleSideBarButton"
       >
         {isSideBarOpen ? (
           <FaTimes className="text-xl" />
