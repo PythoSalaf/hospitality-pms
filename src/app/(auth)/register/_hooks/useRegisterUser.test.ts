@@ -1,6 +1,4 @@
-import { describe, expect, it } from "vitest";
-import { render, screen } from "~~/lib/test";
-import { appRoutes } from "~~/routes";
+import { describe, it } from "vitest";
 
 describe("useRegisterUser", () => {
   it.todo(
