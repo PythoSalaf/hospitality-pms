@@ -1,10 +1,10 @@
-# Lendsqr Finance
+# Lendsqr Application
 
-This application helps you manage your lending and borrowing activities. The deployed application can be found on [lendsqr.finance](https://isaac-odeh-lendsqr-fe-test.vercel.app/).
+This application helps you manage your lending and borrowing activities. The deployed application can be found [here](https://isaac-odeh-lendsqr-fe-test.vercel.app/).
 
 ## Table of Contents
 
-- [Lendsqr Finance](#lendsqr-finance)
+- [Title](#lendsqr-application)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Features](#features)
@@ -26,7 +26,7 @@ The primary purpose of this project is to help you manage your lending and borro
 
 The app is currently equipped with the following features:
 
-- User Authentication: The user should be able to login/register into the application, and should be prevented from accessing pages that require authentication. The user is also capable of logging out from the User dropdown located on the top left corner.
+- User Authentication: The user should be able to login into the application, and should be prevented from accessing pages that require authentication. The user is also capable of logging out from the User dropdown located on the top left corner.
 - User Management: The user is expected to have access to a dashboard that displays user data and also a general analytics on the user. The user data is displayed in a table and is paginated. However, the size of the data available for view and the current page can be controlled at the user’s discretion. The user is also able to perform the following actions;
   - View User Details: This possible by either clicking on the user’s name or clicking on `view details` on actions column dropdown menu
   - Blacklist User: The authenticated user can also blacklist a user, provided the user isn’t already blacklisted. A user can be blacklisted from the actions dropdown menu or on the user details page via the `blacklist` btn
