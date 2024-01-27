@@ -7,7 +7,6 @@ import FeeAndPricingIcon from "./FeeAndPricingIcon";
 import GuarantorsIcon from "./GuarantorsIcon";
 import HomeIcon from "./HomeIcon";
 import KarmaIcon from "./KarmaIcon";
-import LendsQrLogoIcon from "./LendsQrLogoIcon";
 import LoanProductIcon from "./LoanProductIcon";
 import LoanRequestIcon from "./LoanRequestIcon";
 import LoansIcon from "./LoansIcon";
@@ -29,6 +28,7 @@ import UserWithLoanCardIcon from "./UserWithLoanCardIcon";
 import UserWithSavingsCardIcon from "./UserWithSavingsCardIcon";
 import FilterResultIcon from "./FilterResultIcon";
 import CalenderIcon from "./CalenderIcon";
+import LogoIcon from "./LogoIcon";
 
 export {
   CalenderIcon,
@@ -47,7 +47,7 @@ export {
   GuarantorsIcon,
   HomeIcon,
   KarmaIcon,
-  LendsQrLogoIcon,
+  LogoIcon,
   LoanProductIcon,
   LoanRequestIcon,
   LoansIcon,
