@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Inter, Work_Sans, Roboto } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.scss";
+import "./globals.css";
 import { Toaster } from "~~/components/ui/sonner";
+import ENV from "~~/config/enviroment";
 
 export const metadata: Metadata = {
-  title: "Lendsqr",
-  description: "This is a financial management app",
+  title: ENV.APP_NAME,
+  description: "This is a hospitality management app",
 };
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
