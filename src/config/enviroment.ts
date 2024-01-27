@@ -1,5 +1,5 @@
 const DEFAULT_NODE_ENV = "development";
-const DEFAULT_APP_NAME = "lendsqr";
+const DEFAULT_APP_NAME = "Hospitax";
 
 /**
  * Object containing environment variables for the application.
