@@ -1,12 +1,10 @@
 export { type IconProps } from "./icon";
 
-export type TOrganization = {
-  name: string;
-  id: string;
-  createdAt: string;
-};
-
-export type TSideBarLinkCategory = "customers" | "businesses" | "settings";
+export type TSideBarLinkCategory =
+  | "management"
+  | "booking & reservation"
+  | "orders"
+  | "reports & analytics";
 
 export type TSideBarLink = {
   icon: React.ReactNode;
