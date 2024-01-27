@@ -84,6 +84,11 @@ const LoginForm: React.FC<{
                 Forgot PASSWORD?
               </button>
             </Link>
+            <Link href={appRoutes.register}>
+              <button className="uppercase text-xs text-highlight">
+                Register
+              </button>
+            </Link>
           </div>
         </div>
 

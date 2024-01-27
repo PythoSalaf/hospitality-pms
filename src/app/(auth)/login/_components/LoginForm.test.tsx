@@ -131,7 +131,7 @@ describe("LoginForm", () => {
       },
     });
     const emailVal = "james@example.com";
-    const passwordVal = "Lendsqr123$";
+    const passwordVal = "hospitax123$";
     expect(submitButton).toBeInTheDocument();
     expect(emailInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
