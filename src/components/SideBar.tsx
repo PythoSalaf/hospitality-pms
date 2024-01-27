@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { OrganizationSelector } from "./SelectOrganization";
+import { RoleSelector } from "./SelectRole";
 import Link from "next/link";
 import { TSideBarLink } from "~~/types";
 import { Button } from "./ui/button";
@@ -54,7 +54,7 @@ const SideBar: React.FC<{
             <FaTimes className="text-xl" />
           </Button>
         </div>
-        <OrganizationSelector />
+        <RoleSelector />
 
         {/* dashboard */}
         <div className={`my-8`}>
