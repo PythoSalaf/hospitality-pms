@@ -8,9 +8,6 @@ export const DEFAULT_LOGO_WIDTH = 48;
 export const GENERAL_LAYOUT_CONTAINER_PADDING = "lg:px-6 px-4 py-4 lg:py-5";
 export const GLOBAL_SEARCH_PLACEHOLDER_TEXT = "Search for anything";
 
-export const MOCK_ORGANIZATION_API_URL =
-  "https://run.mocky.io/v3/90ca5ce7-80ff-4b6e-9721-f8811cf13f21";
-
 export const EXTERNAL_DOCUMENTATION_URL =
   "https://carnation-bladder-b2b.notion.site/Hospitality-PMS-8a2226acd72a43bb97eee7f13ffc7b40";
 // tailwind
