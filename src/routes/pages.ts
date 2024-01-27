@@ -17,43 +17,50 @@ export const errorRoutes = {
 };
 
 /**
- * Setting Routes
- */
-export const settingRoutes = {
-  settingAuditLogs: "/settings/audit-logs",
-  settingFeesAndPricing: "/settings/fees-and-pricing",
-  settingPreferences: "/settings/preferences",
-};
-/**
  * docmentation Routes
  */
 export const documentationRoutes = {
   documentationHome: "/documentation",
 };
 /**
- * customer Routes
+ * management Routes
  */
-export const customerRoutes = {
-  customerUsers: "/customers/users",
-  customerLoans: "/customers/loans",
-  customerSavings: "/customers/savings",
-  customerLoanRequests: "/customers/loan-requests",
-  customerWhitelist: "/customers/whitelist",
-  customerDecisionModels: "/customers/decision-models",
-  customerKarma: "/customers/karma",
-  customerGuarantors: "/customers/guarantors",
+export const managementRoutes = {
+  managementCustomers: "/management/customers",
+  managementStaff: "/management/staff",
+  managementAdministrators: "/management/administrators",
+  managementBranches: "/management/branches",
+  managementRooms: "/management/rooms",
+  managementVenues: "/management/venues",
+  managementServices: "/management/services",
 };
 /**
- * bussiness Routes
+ * order Routes
  */
-export const businessRoutes = {
-  businessOrganizations: "/business/organizations",
-  businessLoanProducts: "/business/loan-products",
-  businessSavingsProducts: "/business/savings-products",
-  businessFeesAndCharges: "/business/fees-and-charges",
-  businessTransactions: "/business/transactions",
-  businessServices: "/business/services",
-  businessServiceAccount: "/business/service-account",
-  businessSettlements: "/business/settlements",
-  businessReports: "/business/reports",
+export const orderRoutes = {
+  orderRecentOrders: "/order/recent-orders",
+  orderFulfilledOrders: "/order/fullfilled-orders",
+  orderCancelledOrders: "/order/cancelled-orders",
+};
+/**
+ * booking & reservation Routes
+ */
+export const bookingAndReservationRoutes = {
+  bookingAndReservationBookings: "/booking-reservations/bookings",
+  bookingAndReservationReservations: "/booking-reservations/reservations",
+  bookingAndReservationAvailableRooms: "/booking-reservations/available-rooms",
+  bookingAndReservationAvailableVenues:
+    "/booking-reservations/available-venues",
+};
+
+/**
+ * Report Routes
+ */
+export const reportRoutes = {
+  reportSales: "/report/sales",
+  reportCustomers: "/report/customers",
+  reportServices: "/report/services",
+  reportOrders: "/report/orders",
+  reportBookings: "/report/bookings",
+  reportReservations: "/report/reservations",
 };

@@ -1,11 +1,12 @@
 import { apiV1ProtectedRoutes } from "./api";
 import {
   authRoutes,
-  customerRoutes,
+  bookingAndReservationRoutes,
   documentationRoutes,
   errorRoutes,
-  settingRoutes,
-  businessRoutes,
+  managementRoutes,
+  reportRoutes,
+  orderRoutes,
 } from "./pages";
 
 export { authRoutes };
@@ -27,7 +28,7 @@ export const publicRoutes = {
  * @property {string} newPassword - The path for the "new password" route.
  * @property {string} dashboard - The path for the "dashboard" route.
  * @property {Object} apiV1ProtectedRoutes - The paths for other protected routes defined in the "apiV1ProtectedRoutes" object.
- * @property {Object} settingRoutes - The paths for other protected routes defined in the "settingRoutes" object.
+ * @property {Object} managementRoutes - The paths for other protected routes defined in the "managementRoutes" object.
  */
 
 /**
@@ -37,10 +38,11 @@ export const publicRoutes = {
 export const authProtectedRoutes = {
   newPassword: "/new-password",
   dashboard: "/dashboard",
-  ...customerRoutes,
-  ...businessRoutes,
+  ...bookingAndReservationRoutes,
+  ...reportRoutes,
   ...apiV1ProtectedRoutes,
-  ...settingRoutes,
+  ...managementRoutes,
+  ...orderRoutes,
 };
 
 /**

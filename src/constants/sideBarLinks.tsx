@@ -31,125 +31,129 @@ export const SIDEBAR_LINKS: TSideBarLink[] = [
   // customers
   {
     icon: <UsersIcon />,
-    title: "Users",
-    url: appRoutes.customerUsers,
-    category: "customers",
+    title: "Customers",
+    url: appRoutes.managementCustomers,
+    category: "management",
   },
   {
     icon: <GuarantorsIcon />,
-    title: "Guarantors",
-    url: appRoutes.customerGuarantors,
-    category: "customers",
+    title: "Staff",
+    url: appRoutes.managementStaff,
+    category: "management",
   },
   {
     icon: <LoansIcon />,
-    title: "Loans",
-    url: appRoutes.customerLoans,
-    category: "customers",
+    title: "Administrators",
+    url: appRoutes.managementAdministrators,
+    category: "management",
   },
   {
     icon: <DecisionModelIcon />,
-    title: "Decision Models",
-    url: appRoutes.customerDecisionModels,
-    category: "customers",
+    title: "Branches",
+    url: appRoutes.managementBranches,
+    category: "management",
   },
   {
     icon: <SavingsIcon />,
-    title: "Savings",
-    url: appRoutes.customerSavings,
-    category: "customers",
+    title: "Rooms",
+    url: appRoutes.managementRooms,
+    category: "management",
   },
   {
     icon: <LoanRequestIcon />,
-    title: "Loan Requests",
-    url: appRoutes.customerLoanRequests,
-    category: "customers",
+    title: "Venues",
+    url: appRoutes.managementVenues,
+    category: "management",
   },
   {
     icon: <WhitelistIcon />,
-    title: "Whitelist",
-    url: appRoutes.customerWhitelist,
-    category: "customers",
+    title: "Services",
+    url: appRoutes.managementServices,
+    category: "management",
   },
-  {
-    icon: <KarmaIcon />,
-    title: "Karma",
-    url: appRoutes.customerKarma,
-    category: "customers",
-  },
-  // businesses
+
+  // booking & reservation
   {
     icon: <OrganizationIcon />,
-    title: "Organization",
-    url: appRoutes.businessOrganizations,
-    category: "businesses",
+    title: "Bookings",
+    url: appRoutes.bookingAndReservationBookings,
+    category: "booking & reservation",
   },
   {
     icon: <LoanProductIcon />,
-    title: "Loan Products",
-    url: appRoutes.businessLoanProducts,
-    category: "businesses",
+    title: "Reservations",
+    url: appRoutes.bookingAndReservationReservations,
+    category: "booking & reservation",
   },
   {
     icon: <SavingProductIcon />,
-    title: "Savings Products",
-    url: appRoutes.businessSavingsProducts,
-    category: "businesses",
+    title: "Available Rooms",
+    url: appRoutes.bookingAndReservationAvailableRooms,
+    category: "booking & reservation",
   },
   {
     icon: <FeeAndChargeIcon />,
-    title: "Fees and Charges",
-    url: appRoutes.businessFeesAndCharges,
-    category: "businesses",
+    title: "Available Venues",
+    url: appRoutes.bookingAndReservationAvailableVenues,
+    category: "booking & reservation",
   },
-  {
-    icon: <TransactionIcon />,
-    title: "Transactions",
-    url: appRoutes.businessTransactions,
-    category: "businesses",
-  },
-  {
-    icon: <ServiceIcon />,
-    title: "Services",
-    url: appRoutes.businessServices,
-    category: "businesses",
-  },
-  {
-    icon: <ServiceAccountIcon />,
-    title: "Service Account",
-    url: appRoutes.businessServiceAccount,
-    category: "businesses",
-  },
-  {
-    icon: <SettlementIcon />,
-    title: "Settlements",
-    url: appRoutes.businessSettlements,
-    category: "businesses",
-  },
-  {
-    icon: <ReportIcon />,
-    title: "Reports",
-    url: appRoutes.businessReports,
-    category: "businesses",
-  },
-  // settings
+
+  // orders
   {
     icon: <PreferenceIcon />,
-    title: "Preferences",
-    url: appRoutes.settingPreferences,
-    category: "settings",
+    title: "Recent Orders",
+    url: appRoutes.orderRecentOrders,
+    category: "orders",
   },
   {
     icon: <FeeAndPricingIcon />,
-    title: "Fees and Pricing",
-    url: appRoutes.settingFeesAndPricing,
-    category: "settings",
+    title: "Fulfilled Orders",
+    url: appRoutes.orderFulfilledOrders,
+    category: "orders",
   },
   {
+    icon: <KarmaIcon />,
+    title: "Cancelled Orders",
+    url: appRoutes.orderCancelledOrders,
+    category: "orders",
+  },
+  // reports & analytics
+  {
+    icon: <ReportIcon />,
+    title: "Sales Report",
+    url: appRoutes.reportSales,
+    category: "reports & analytics",
+  },
+  {
+    icon: <ServiceIcon />,
+    title: "Customers Report",
+    url: appRoutes.reportCustomers,
+    category: "reports & analytics",
+  },
+  {
+    icon: <ServiceAccountIcon />,
+    title: "Services Report",
+    url: appRoutes.reportServices,
+    category: "reports & analytics",
+  },
+  {
+    icon: <SettlementIcon />,
+    title: "Orders Report",
+    url: appRoutes.reportOrders,
+    category: "reports & analytics",
+  },
+
+  {
     icon: <AuditLogIcon />,
-    title: "Audit Logs",
-    url: appRoutes.settingAuditLogs,
-    category: "settings",
+    title: "Bookings Report",
+    url: appRoutes.reportBookings,
+    category: "reports & analytics",
+  },
+  {
+    icon: <TransactionIcon />,
+    title: "Reservations Report",
+    url: appRoutes.reportReservations,
+    category: "reports & analytics",
   },
 ];
 /**
@@ -158,15 +162,23 @@ export const SIDEBAR_LINKS: TSideBarLink[] = [
  */
 export const SIDEBAR_LINK_CATEGORY_ITEMS: TSideBarLinkCategoryItem[] = [
   {
-    title: "Customers",
-    items: SIDEBAR_LINKS.filter((item) => item.category === "customers"),
+    title: "management",
+    items: SIDEBAR_LINKS.filter((item) => item.category === "management"),
   },
   {
-    title: "Businesses",
-    items: SIDEBAR_LINKS.filter((item) => item.category === "businesses"),
+    title: "booking & reservation",
+    items: SIDEBAR_LINKS.filter(
+      (item) => item.category === "booking & reservation"
+    ),
   },
   {
-    title: "Settings",
-    items: SIDEBAR_LINKS.filter((item) => item.category === "settings"),
+    title: "orders",
+    items: SIDEBAR_LINKS.filter((item) => item.category === "orders"),
+  },
+  {
+    title: "reports & analytics",
+    items: SIDEBAR_LINKS.filter(
+      (item) => item.category === "reports & analytics"
+    ),
   },
 ];
