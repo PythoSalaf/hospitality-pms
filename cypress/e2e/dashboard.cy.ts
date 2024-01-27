@@ -1,5 +1,5 @@
 import { appRoutes } from "../../src/routes";
-import { CORRECT_CREDENTIALS, USERS_API_URL } from "../_constants";
+import { CORRECT_CREDENTIALS } from "../_constants";
 
 // TODO: ENsure cypress tests uses absolute imports
 
@@ -36,37 +36,12 @@ describe("User Dashboard", () => {
   it("Should contain 4 user analytic cards and a table with user columns", () => {
     cy.url().should("include", appRoutes.dashboard);
     cy.contains("Dashboard").should("exist");
-    cy.intercept("GET", USERS_API_URL, { fixture: "users.json" }).as("apiCall");
-    cy.wait("@apiCall");
 
     // Perform assertions for the specific content on the dashboard/users page
-    cy.contains("h6", "Users").should("exist");
-    cy.contains("h6", "Active Users").should("exist");
-    cy.contains("h6", "Users with loans").should("exist");
-    cy.contains("h6", "Users with savings").should("exist");
-    cy.get("table").should("exist");
-    cy.get("table th").then(($headers) => {
-      // Now $headers contains all the table header elements
-      // You can perform assertions or actions on the headers
-      // For example, checking the number of headers
-      expect($headers).to.have.length(7); // Adjust the length based on your table structure
-    });
-    cy.get("table th")
-      .contains(/organization/i)
-      .should("exist");
-    cy.get("table th")
-      .contains(/username/i)
-      .should("exist");
-    cy.get("table th").contains(/email/i).should("exist");
-    cy.get("table th")
-      .contains(/phone number/i)
-      .should("exist");
-    cy.get("table th")
-      .contains(/date joined/i)
-      .should("exist");
-    cy.get("table th")
-      .contains(/Status/i)
-      .should("exist");
+    cy.contains("h6", "AVAILABLE ROOMS").should("exist");
+    cy.contains("h6", "NEW CUSTOMERS").should("exist");
+    cy.contains("h6", "ACTIVE ORDERS").should("exist");
+    cy.contains("h6", "TOTAL BOOKINGS & RESE ...").should("exist");
   });
 
   it("The user should be able to toggle sidebar on a mobile view", async () => {
@@ -78,7 +53,7 @@ describe("User Dashboard", () => {
 
     // The sidebar should be open and its components visiible
     cy.get("div")
-      .contains(/switch organization/i)
+      .contains(/switch role/i)
       .should("be.visible");
     cy.get("div")
       .contains(/dashboard/i)
@@ -87,21 +62,17 @@ describe("User Dashboard", () => {
       .contains(/customers/i)
       .should("be.visible");
     cy.get("div").contains(/users/i).should("be.visible");
-    cy.get("div")
-      .contains(/guarantors/i)
-      .should("be.visible");
+    cy.get("div").contains(/staff/i).should("be.visible");
     cy.get("div").contains(/loans/i).should("be.visible");
     cy.get("div")
-      .contains(/decision models/i)
+      .contains(/administrators/i)
       .should("be.visible");
     cy.get("div")
-      .contains(/savings/i)
+      .contains(/branches/i)
       .should("be.visible");
+    cy.get("div").contains(/rooms/i).should("be.visible");
     cy.get("div")
-      .contains(/loan requests/i)
-      .should("be.visible");
-    cy.get("div")
-      .contains(/whitelist/i)
+      .contains(/venues/i)
       .should("be.visible");
     // TODO: Populate other fields here, also find a way to pass the details as an array gotten from source code
 
@@ -110,21 +81,7 @@ describe("User Dashboard", () => {
     cy.get('[data-testid="toggleSideBarCloseBtn"]').click();
     // The sidebar should be close and its components visiible
     cy.get("div")
-      .contains(/switch organization/i)
+      .contains(/switch role/i)
       .should("be.hidden");
   });
-
-  // TODO: Flesh out filter user tests and pagination when time permits
-  // it("The user should be able to filter users by clicking on the filter button and applying a filter", async () => {
-  //   // Check if at least one button exists in the table header
-  //   cy.get("table th button").should("exist");
-
-  //   // Click the first instance of the button within a table header
-  //   cy.get("table th button").first().click({ force: true });
-
-  //   // Check if the filter user form appears
-  //   // cy.get("dialog form").should("be.visible");
-
-  //   // You can add more logic here to interact with the filter form and apply filters
-  // });
 });

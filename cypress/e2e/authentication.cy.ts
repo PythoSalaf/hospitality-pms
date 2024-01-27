@@ -8,7 +8,7 @@ describe("User Authentication", () => {
   });
   it("Unauthenticated user should be redirected to the login page when visiting a page that requires authentication", () => {
     // Visit a route that requires authentication
-    cy.visit(appRoutes.customerUsers);
+    cy.visit(appRoutes.dashboard);
 
     // Check if the URL has changed to the login page
     cy.url().should("include", appRoutes.login);
