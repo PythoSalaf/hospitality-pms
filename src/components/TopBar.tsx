@@ -49,7 +49,7 @@ const TopBar: React.FC<{
           className:
             "text-primary hidden lg:block text-lg lg:text-2xl font-semibold",
         }}
-        image={{ height: 16, width: 16 }}
+        image={{ height: 25, width: 25 }}
         containerClassName="flex lg:gap-x-3 gap-x-2 items-center w-4/12"
       />
       <SearchBar />
