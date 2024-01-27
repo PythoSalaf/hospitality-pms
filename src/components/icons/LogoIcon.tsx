@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProps } from "~~/types";
 
-const LendsQrLogoIcon: React.FC<IconProps> = (props) => {
+const LogoIcon: React.FC<IconProps> = (props) => {
   return (
     <svg
       width="25"
@@ -34,4 +34,4 @@ const LendsQrLogoIcon: React.FC<IconProps> = (props) => {
   );
 };
 
-export default LendsQrLogoIcon;
+export default LogoIcon;
