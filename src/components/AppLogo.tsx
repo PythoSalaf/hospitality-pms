@@ -39,7 +39,7 @@ const AppLogo: React.FC<{
 }> = ({
   text,
   image,
-  containerClassName = "flex lg:gap-x-4 gap-x-2 items-center",
+  containerClassName = "flex lg:gap-x-2 gap-x-2 items-center",
 }) => {
   return (
     <div className={containerClassName}>

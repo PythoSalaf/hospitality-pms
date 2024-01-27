@@ -39,7 +39,7 @@ describe("AppLogo", () => {
   it("Should render a text when text props are passed", () => {
     const textProps = {
       className: "text-primary text-xl lg:text-3xl font-semibold",
-      value: "lendsqr",
+      value: "hospitax",
     };
     render(<AppLogo text={textProps} />);
     const spanEl = screen.getByText((content) =>
