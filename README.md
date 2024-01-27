@@ -1,10 +1,10 @@
-# Lendsqr Application
+# Hospitality PMS
 
-This application helps you manage your lending and borrowing activities. The deployed application can be found [here](https://isaac-odeh-lendsqr-fe-test.vercel.app/).
+The primary aim of this project as indicated by a majority of its participants is to gain expertise in their respective fields and to have experience building a project all the way from the conception of an idea to a working solution that provides value to users of the application, individuals involved in the hospitality industry. The primary features of the application are as follows User/Core Entity Management, Booking & Reservation Management, Ordering Service, Payment Service and Reports & Analytics. Additional features include Room Management, Multi-language support, Customer Chat Service, Map View, and Intuitive Search & Filter. The deployed application can be found [here](/).
 
 ## Table of Contents
 
-- [Title](#lendsqr-application)
+- [Title](#hospitality-pms)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Features](#features)
@@ -20,18 +20,18 @@ This application helps you manage your lending and borrowing activities. The dep
 
 ## Introduction
 
-The primary purpose of this project is to help you manage your lending and borrowing activities. The app is equipped with a couple of features which are listed in the [Features](#features) section. In addition to running the application, the app can also be tested, this is covered in details in the [Testing](#testing) section.
+The primary value proposed by this project is to provide a platform for the hospitality industry to manage their business operations. The app is equipped with a couple of features which are listed in the [Features](#features) section. In addition to running the application, the app can also be tested, this is covered in details in the [Testing](#testing) section.
 
 ## Features
 
 The app is currently equipped with the following features:
 
 - User Authentication: The user should be able to login into the application, and should be prevented from accessing pages that require authentication. The user is also capable of logging out from the User dropdown located on the top left corner.
-- User Management: The user is expected to have access to a dashboard that displays user data and also a general analytics on the user. The user data is displayed in a table and is paginated. However, the size of the data available for view and the current page can be controlled at the user’s discretion. The user is also able to perform the following actions;
-  - View User Details: This possible by either clicking on the user’s name or clicking on `view details` on actions column dropdown menu
-  - Blacklist User: The authenticated user can also blacklist a user, provided the user isn’t already blacklisted. A user can be blacklisted from the actions dropdown menu or on the user details page via the `blacklist` btn
-  - Activate User: The authenticated user can also activate a user, provided the user isn’t already activated. A user can be activated from the actions dropdown menu or on the user details page via the `activate` btn
-  - Filter Users: The authenticated user is also capable of filtering user’s data via the filter button conveniently located beside each column on the user table. It should be noted that when a particular filter is being applied the column that indicates that filter will be highlighted.
+- Core Entity Management: The app should be able to manage users, rooms, and bookings. The app should be able to update user information, room information, and booking information.
+- Booking & Reservation Management: The app should be able to manage bookings and reservations. The app should be able to create, read, update, and delete bookings and reservations.
+- Ordering Service: The app should be able to manage orders. The app should be able to create, read, update, and delete orders.
+- Payment Service: The app should be able to manage payments. The app should be able to create, read, update, and delete payments.
+- Reports & Analytics: The app should be able to generate reports and analytics. The app should be able to generate reports and analytics.
 
 ## Getting Started
 
@@ -108,4 +108,4 @@ yarn build # using yarn
 
 ## Documentation
 
-The application documentation is available on the [Lendqr documentation](https://carnation-bladder-b2b.notion.site/Lendsqr-Assessment-2be98206dfbd4b128b118d8516e26e2f?pvs=4). It should be noted that the source code is also documentated via docstring comments and typescript type definitions.
+The application documentation is available on the [Hospitality PMS documentation](https://carnation-bladder-b2b.notion.site/Hospitality-PMS-8a2226acd72a43bb97eee7f13ffc7b40). It should be noted that the source code is also documentated via docstring comments and typescript type definitions.
