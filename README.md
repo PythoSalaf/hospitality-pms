@@ -1,6 +1,6 @@
 # Hospitality PMS
 
-The primary aim of this project as indicated by a majority of its participants is to gain expertise in their respective fields and to have experience building a project all the way from the conception of an idea to a working solution that provides value to users of the application, individuals involved in the hospitality industry. The primary features of the application are as follows User/Core Entity Management, Booking & Reservation Management, Ordering Service, Payment Service and Reports & Analytics. Additional features include Room Management, Multi-language support, Customer Chat Service, Map View, and Intuitive Search & Filter. The deployed application can be found [here](/).
+The primary aim of this project as indicated by a majority of its participants is to gain expertise in their respective fields and to have experience building a project all the way from the conception of an idea to a working solution that provides value to users of the application, individuals involved in the hospitality industry. The primary features of the application are as follows User/Core Entity Management, Booking & Reservation Management, Ordering Service, Payment Service and Reports & Analytics. Additional features include Room Management, Multi-language support, Customer Chat Service, Map View, and Intuitive Search & Filter. The deployed application can be found [here](https://hospitality-pms.vercel.app/).
 
 ## Table of Contents
 
