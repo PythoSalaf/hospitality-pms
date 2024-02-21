@@ -13,9 +13,7 @@ import { cn } from "~~/lib/utils";
 import { FaTimes } from "react-icons/fa";
 import { GENERAL_LAYOUT_CONTAINER_PADDING } from "~~/constants";
 
-export const SIDEBAR_WIDTH_CLASS_NAME = "lg:min-w-2/12 lg:w-[20vw]";
-const BEFORE_4_SIDEBAR_ITEM =
-  " before:absolute before:py-4 before:-mt-3 before:right-0 before:left-0 before:-z-10 before:w-full lg:before:w-[20vw] before:bg-highlight-lightest before:border-highlight before:border-l-8  before:content-['.'] before:text-transparent";
+export const SIDEBAR_WIDTH_CLASS_NAME = "lg:min-w-2/12 lg:w-[14vw]";
 
 const SideBar: React.FC<{
   isSideBarOpen?: boolean;
@@ -102,20 +100,10 @@ const SideBarItem: React.FC<{ item: TSideBarLink; onClick?: () => void }> = ({
 
   return (
     // TODO: Add trasisition animation for the before element
-    <Link
-      href={url}
-      className={` ${
-        activeCondition
-          ? `opacity-95 before:block ${BEFORE_4_SIDEBAR_ITEM}`
-          : `opacity-70 hover:opacity-60 active:opacity-60 focus:opacity-60 hover:before:block before:hidden ${BEFORE_4_SIDEBAR_ITEM}`
-      }`}
-      onClick={onClick}
-    >
+    <Link href={url} onClick={onClick}>
       <Button
         variant="ghost"
-        className={`w-full font-worksans justify-start font-normal px-3 flex gap-x-2 items-center hover:text-primary active:text-primary hover:bg-transparent ${
-          activeCondition ? "text-primary" : ""
-        }`}
+        className="flex items-center gap-x-3 w-full justify-start"
       >
         {item.icon}
         <span className={`text-base`}>{item.title}</span>
