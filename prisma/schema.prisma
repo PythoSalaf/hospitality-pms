@@ -25,7 +25,7 @@ model User {
 model Branch {
   id                 String  @id @default(cuid())
   name               String
-  description      String?  @db.Text
+  description      String?  
   users UserOnBranch[]
 
   @@unique([name])

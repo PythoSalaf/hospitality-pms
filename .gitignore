@@ -4,6 +4,7 @@ LEARNING_GUIDE.ts
 /prisma/migrations
 /prisma/dev.db
 /prisma/dev.db-journal
+/prisma/local_migrations
 
 # local prisma files
 /prisma/___local_migrations
