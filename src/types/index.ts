@@ -3,6 +3,7 @@ import { PaginationSchema } from "~~/schema";
 
 export { type IconProps } from "./icon";
 
+export type TUserRole = "CUSTOMER" | "ADMIN" | "STAFF";
 export type TSideBarLinkCategory =
   | "management"
   | "booking & reservation"

@@ -71,27 +71,39 @@ export class BranchRepository {
     pagination?: z.infer<typeof PaginationSchema>;
     search?: z.infer<typeof SearchShema>;
   }) {
-    const { currentPage, pageSize = DEFAULT_PAGE_SIZE } = pagination;
+    const { currentPage: lastItemIndex, pageSize = DEFAULT_PAGE_SIZE } =
+    pagination;
 
-    try {
-      const data = await db.branch.findMany({
-        take: pageSize,
-        skip: 1, // Skip the cursor
-        cursor: {
-          id: currentPage,
-        },
-        where: { name: { contains: search } },
-      });
-      const lastItemInResults = data[pageSize - 1]; // Remember: zero-based index! :)
-      const cursor = lastItemInResults.id;
-      return {
-        data,
-        total: data.length,
-        currentIndex: cursor,
-      };
-    } catch {
-      return null;
-    }
+  try {
+    const total = await db.branch.count({
+      where: { name: { contains: search } },
+    });
+    const data = await db.branch.findMany({
+      take: pageSize,
+      ...(lastItemIndex
+        ? {
+            skip: 1, // Skip the cursor
+            cursor: {
+              id: lastItemIndex,
+            },
+          }
+        : {}),
+      where: { name: { contains: search } },
+    });
+
+    const lastItemInResults = data[pageSize - 1]; // Remember: zero-based index! :)
+    const cursor = lastItemInResults?.id;
+    return {
+      data,
+      metaData: {
+        hasNextPage: data.length > 0,
+        lastIndex: cursor,
+        total,
+      },
+    };
+  } catch {
+    return null;
+  }
   }
   /**
    * Retrieves a branch by their ID.

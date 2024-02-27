@@ -35,9 +35,9 @@ export const getBranches = async (
     return {
       message: "Branches retrieved successfully!",
       data: {
-        currentPage: branches?.currentIndex ?? "",
+        currentPage: branches?.metaData.lastIndex ?? "",
         result: branches?.data ?? [],
-        total: branches?.total ?? 0,
+        total: branches?.metaData.total ?? 0,
       },
     };
   } catch (error) {
