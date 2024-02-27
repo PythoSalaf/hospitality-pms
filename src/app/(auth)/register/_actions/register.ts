@@ -33,8 +33,8 @@ export const register = async (
   });
 
   const verificationToken = await generateVerificationToken(email);
-  // const emailToSendTo = verificationToken.email;
-  const emailToSendTo = "thisbroisfresh@gmail.com"; //hardcoded for now
+  const emailToSendTo = verificationToken.email;
+  // const emailToSendTo = "thisbroisfresh@gmail.com"; //hardcoded for now
   await sendVerificationEmail(emailToSendTo, verificationToken.token);
 
   return { success: "Confirmation email sent!", isError: false };
