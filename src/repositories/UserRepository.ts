@@ -74,12 +74,18 @@ export class UserRepository {
     password,
     userRoles = ["CUSTOMER"],
     currentRole = "CUSTOMER",
+    staff,
+    customer,
+    admin,
   }: {
     name: string;
     email: string;
     password: string;
     userRoles?: TUserRole[];
     currentRole?: TUserRole;
+    staff?: {};
+    customer?: {};
+    admin?: {};
   }): Promise<User> => {
     return await db.user.create({
       data: {
@@ -88,6 +94,15 @@ export class UserRepository {
         password,
         userRoles: userRoles.join(","),
         currentRole,
+        staff: {
+          create: staff,
+        },
+        customer: {
+          create: customer,
+        },
+        admin: {
+          create: admin,
+        },
       },
     });
   };

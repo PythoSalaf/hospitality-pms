@@ -2,6 +2,8 @@ import { User } from "@prisma/client";
 import { UserRepository } from "./UserRepository";
 import { z } from "zod";
 import { PaginationSchema, SearchShema } from "~~/schema";
+import { db } from "~~/lib/database";
+import { DEFAULT_PAGE_SIZE } from "~~/constants";
 
 /**
  * Repository class for managing staff-related operations in the database.
@@ -11,6 +13,7 @@ export class StaffRepository {
   constructor() {
     this.userRepo = new UserRepository();
   }
+
   /**
    * Creates a new staff in the database.
    * @param param0 - Object containing user details (name, email, password).
@@ -33,6 +36,7 @@ export class StaffRepository {
         password,
         currentRole: "STAFF",
         userRoles: ["STAFF"],
+        staff: {},
       });
     } catch (error) {
       throw error;
@@ -51,9 +55,43 @@ export class StaffRepository {
     pagination?: z.infer<typeof PaginationSchema>;
     search?: z.infer<typeof SearchShema>;
   }) {
+    const { currentPage: lastItemIndex, pageSize = DEFAULT_PAGE_SIZE } =
+      pagination;
+
     try {
-      const { retrieveUsers } = this.userRepo;
-      return await retrieveUsers({ pagination, search, userRole: "STAFF" });
+      const total = await db.staff.count({
+        where: {
+          user: { name: { contains: search } },
+        },
+      });
+      const data = await db.staff.findMany({
+        take: pageSize,
+        ...(lastItemIndex
+          ? {
+              skip: 1, // Skip the cursor
+              cursor: {
+                id: lastItemIndex,
+              },
+            }
+          : {}),
+        where: {
+          user: { name: { contains: search } },
+        },
+        include: {
+          user: true,
+        },
+      });
+
+      const lastItemInResults = data[pageSize - 1]; // Remember: zero-based index! :)
+      const cursor = lastItemInResults?.id;
+      return {
+        data,
+        metaData: {
+          hasNextPage: data.length > 0,
+          lastIndex: cursor,
+          total,
+        },
+      };
     } catch {
       return null;
     }
@@ -71,8 +109,53 @@ export class StaffRepository {
     data: { name: string; image?: string };
   }) {
     try {
-      const { updateUser } = this.userRepo;
-      return await updateUser({ id, data });
+      const staff = await db.staff.update({
+        where: { id },
+        data: {
+          user: {
+            update: data,
+          },
+        },
+      });
+      return staff;
+    } catch {
+      return null;
+    }
+  }
+  /**
+   * Assign Staff to branches
+   * @param param0 - staffIds
+   * @returns A promise that resolves with the updated branch or null if not found.
+   */
+  async assignStaffToBranch({
+    staffIds,
+    branchId,
+  }: {
+    staffIds: string[];
+    branchId: string;
+  }) {
+    try {
+      const updatedBranch = await db.branch.update({
+        where: { id: branchId },
+
+        data: {
+          staff: {
+            connect: staffIds.map((staffId) => ({
+              branchId_staffId: {
+                branchId,
+                staffId: staffId,
+              },
+            })),
+          },
+        },
+        select: {
+          id: true,
+          name: true,
+          staff: true,
+          description: true,
+        },
+      });
+      return updatedBranch;
     } catch {
       return null;
     }
@@ -84,8 +167,11 @@ export class StaffRepository {
    */
   async retrieveStaffById({ id }: { id: string }) {
     try {
-      const { getUserById } = this.userRepo;
-      return await getUserById({ id });
+      const staff = await db.staff.findUnique({
+        where: { id },
+        include: { user: true, branches: true },
+      });
+      return staff;
     } catch {
       return null;
     }

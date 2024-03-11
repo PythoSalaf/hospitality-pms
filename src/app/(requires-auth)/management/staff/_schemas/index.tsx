@@ -6,6 +6,10 @@ export const AddStaffSchema = z.object({
   email: z.string().email(),
   password: z.string(),
 });
+export const AssignMultipleStaffToBranchSchema = z.object({
+  branchId: z.string(),
+  staffIds: z.array(z.string()),
+});
 export const UpdateStaffSchema = z.object({
   id: z.string(),
   data: z.object({

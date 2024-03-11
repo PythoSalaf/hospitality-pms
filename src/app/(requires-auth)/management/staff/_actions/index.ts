@@ -6,17 +6,23 @@ import { StaffRepository } from "~~/repositories/StaffRepository";
 import { TApiResponse, TApiResponseWithPagination } from "~~/types";
 import {
   AddStaffSchema,
+  AssignMultipleStaffToBranchSchema,
   GetSIngleStaffSchema,
   GetStaffSchema,
   UpdateStaffSchema,
 } from "../_schemas";
-import { User } from "@prisma/client";
+import { Branch, Staff, User } from "@prisma/client";
 
-const { createStaff, retrieveStaff, retrieveStaffById, updateStaff } =
-  new StaffRepository();
-export const getBranches = async (
+const {
+  createStaff,
+  retrieveStaff,
+  retrieveStaffById,
+  updateStaff,
+  assignStaffToBranch,
+} = new StaffRepository();
+export const getStaff = async (
   values: z.infer<typeof GetStaffSchema>
-): Promise<TApiResponseWithPagination<User> | void> => {
+): Promise<TApiResponseWithPagination<Staff> | void> => {
   try {
     const validatedFields = GetStaffSchema.safeParse(values);
     if (!validatedFields.success) {
@@ -41,7 +47,7 @@ export const getBranches = async (
 };
 export const getSingleStaff = async (
   values: z.infer<typeof GetSIngleStaffSchema>
-): Promise<TApiResponse<User> | void> => {
+): Promise<TApiResponse<Staff> | void> => {
   try {
     const validatedFields = GetSIngleStaffSchema.safeParse(values);
     if (!validatedFields.success) {
@@ -60,9 +66,32 @@ export const getSingleStaff = async (
   }
 };
 
+export const assignMutlitpleStaffToBranch = async (
+  values: z.infer<typeof UpdateStaffSchema>
+): Promise<TApiResponse<Branch> | void> => {
+  try {
+    const validatedFields = AssignMultipleStaffToBranchSchema.safeParse(values);
+    if (!validatedFields.success) {
+      return { message: "Validation Error!" };
+    }
+
+    const { branchId, staffIds } = validatedFields.data;
+
+    const output = await assignStaffToBranch({
+      branchId,
+      staffIds,
+    });
+    return {
+      message: `${staffIds.length} staff assigned to ${output?.name} successfully!`,
+      data: output,
+    };
+  } catch (error) {
+    throw error;
+  }
+};
 export const editStaff = async (
   values: z.infer<typeof UpdateStaffSchema>
-): Promise<TApiResponse<User> | void> => {
+): Promise<TApiResponse<Staff> | void> => {
   try {
     const validatedFields = UpdateStaffSchema.safeParse(values);
     if (!validatedFields.success) {
