@@ -43,6 +43,7 @@ model Customer{
   userId String @unique
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   branches CustomerOnBranch[]
+  roomBooking RoomBooking[]
 
 
 }
@@ -58,12 +59,46 @@ model Branch {
   id                 String  @id @default(cuid())
   name               String
   description      String?  
+  rooms Room[]
   staff StaffOnBranch[]
   customers CustomerOnBranch[]
   admins AdminOnBranch[]
 
   @@unique([name])
 }
+
+model Room {
+  id              String       @id @default(cuid())
+  branchId        String
+  branch      Branch     @relation(fields: [branchId], references: [id])
+  roomNumber      String    
+  type            String //should be an enum as well
+  description     String?
+  price           Float
+  capacity        Int
+  bedType         String //should be an enum as well
+  amenities       String //convert to String[] in prod
+  availability    Boolean
+  images          String //convert to String[] in prod
+  floor           Int
+  status          String //clean, under-maintainance, should be an enum
+  lastCleaned     DateTime
+  bookingHistory  RoomBooking[]
+
+  @@unique([branchId, roomNumber])
+}
+
+model RoomBooking {
+  id        String       @id @default(cuid())
+  roomId    String
+  room      Room     @relation(fields: [roomId], references: [id])
+  customerId    String
+  customer      Customer     @relation(fields: [customerId], references: [id])
+  startDate DateTime
+  endDate   DateTime
+
+}
+
 
 model AdminOnBranch {
   admin       Admin     @relation(fields: [adminId], references: [id])
