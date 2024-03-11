@@ -72,7 +72,7 @@ model Room {
   branchId        String
   branch      Branch     @relation(fields: [branchId], references: [id])
   roomNumber      String    
-  type            String
+  type            String //should be an enum as well
   description     String?
   price           Float
   capacity        Int
