@@ -19,6 +19,7 @@ const {
   retrieveBranchById,
   retrieveBranches,
 } = new BranchRepository();
+
 export const getBranches = async (
   values: z.infer<typeof GetBranchesSchema>
 ): Promise<TApiResponseWithPagination<Branch> | void> => {
@@ -44,6 +45,7 @@ export const getBranches = async (
     throw error;
   }
 };
+
 export const getBranch = async (
   values: z.infer<typeof GetBranchSchema>
 ): Promise<TApiResponse<Branch> | void> => {
@@ -64,6 +66,7 @@ export const getBranch = async (
     throw error;
   }
 };
+
 export const deleteBranch = async (
   values: z.infer<typeof DeleteBranchSchema>
 ): Promise<TApiResponse<Branch> | void> => {
@@ -84,6 +87,7 @@ export const deleteBranch = async (
     throw error;
   }
 };
+
 export const editBranch = async (
   values: z.infer<typeof UpdateBranchSchema>
 ): Promise<TApiResponse<Branch> | void> => {
@@ -108,6 +112,7 @@ export const editBranch = async (
     throw error;
   }
 };
+
 export const addBranch = async (
   values: z.infer<typeof AddBranchSchema>
 ): Promise<TApiResponse<Branch> | void> => {

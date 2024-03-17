@@ -36,6 +36,7 @@ const RegisterForm: React.FC<{
     <Form {..._form}>
       <form
         role="form"
+        // ! considering the onSubmit function triggers the create user server action, isn't it a side effect? I am confused when and when not to use a useEffect in a React application
         onSubmit={_form.handleSubmit(onSubmit)}
         className="space-y-6"
       >
