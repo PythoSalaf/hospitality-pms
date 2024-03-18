@@ -1,13 +1,18 @@
 // prisma/schema.prisma
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 generator client {
   provider = "prisma-client-js"
 }
 
+// enum UserRole {
+//    STAFF
+//    CUSTOMER
+//    ADMIN
+// }
 
 model User {
   id            String    @id @default(cuid())
@@ -16,23 +21,127 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
+  userRoles String? @default("CUSTOMER") //STAFF CUSTOMER ADMIN
+  currentRole  String? @default("CUSTOMER")
   accounts      Account[]
   isTwoFactorEnabled Boolean @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
+  staff Staff?
+  customer Customer?
+  admin Admin?
 }
 
+model Admin{
+  id String @id @default(cuid())
+  userId String @unique
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  branches AdminOnBranch[]
+
+}
+model Customer{
+  id String @id @default(cuid())
+  userId String @unique
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  branches CustomerOnBranch[]
+  roomBooking RoomBooking[]
+
+
+}
+model Staff{
+  id String @id @default(cuid())
+  userId String @unique
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  branches StaffOnBranch[]
+
+}
+
+model Branch {
+  id                 String  @id @default(cuid())
+  name               String
+  description      String?  
+  rooms Room[]
+  staff StaffOnBranch[]
+  customers CustomerOnBranch[]
+  admins AdminOnBranch[]
+
+  @@unique([name])
+}
+
+model Room {
+  id              String       @id @default(cuid())
+  branchId        String
+  branch      Branch     @relation(fields: [branchId], references: [id])
+  roomNumber      String    
+  type            String //should be an enum as well
+  description     String?
+  price           Float
+  capacity        Int
+  bedType         String //should be an enum as well
+  amenities       String //convert to String[] in prod
+  availability    Boolean
+  images          String //convert to String[] in prod
+  floor           Int
+  status          String //clean, under-maintainance, should be an enum
+  lastCleaned     DateTime
+  bookingHistory  RoomBooking[]
+
+  @@unique([branchId, roomNumber])
+}
+
+model RoomBooking {
+  id        String       @id @default(cuid())
+  roomId    String
+  room      Room     @relation(fields: [roomId], references: [id])
+  customerId    String
+  customer      Customer     @relation(fields: [customerId], references: [id])
+  startDate DateTime
+  endDate   DateTime
+
+}
+
+
+model AdminOnBranch {
+  admin       Admin     @relation(fields: [adminId], references: [id])
+  adminId     String // relation scalar field (used in the `@relation` attribute above)
+  branch  Branch @relation(fields: [branchId], references: [id])
+  branchId String // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([branchId, adminId])
+}
+model CustomerOnBranch {
+  customer       Customer     @relation(fields: [customerId], references: [id])
+  customerId     String // relation scalar field (used in the `@relation` attribute above)
+  branch  Branch @relation(fields: [branchId], references: [id])
+  branchId String // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([branchId, customerId])
+}
+model StaffOnBranch {
+  staff       Staff     @relation(fields: [staffId], references: [id])
+  staffId     String // relation scalar field (used in the `@relation` attribute above)
+  branch  Branch @relation(fields: [branchId], references: [id])
+  branchId String // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([branchId, staffId])
+}
 model Account {
   id                 String  @id @default(cuid())
   userId             String
   type               String
   provider           String
   providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
+  refresh_token      String?  
+  access_token       String?  
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String?  @db.Text
+  id_token           String?  
   session_state      String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

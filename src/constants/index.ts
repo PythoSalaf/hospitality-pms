@@ -4,6 +4,7 @@ export const DEFAULT_LOGO_URL = LogoIcon;
 export const DEFAULT_LOGO_ALT = "logo";
 export const DEFAULT_LOGO_HEIGHT = 48;
 export const DEFAULT_LOGO_WIDTH = 48;
+export const DEFAULT_PAGE_SIZE = 15;
 
 export const GENERAL_LAYOUT_CONTAINER_PADDING = "lg:px-6 px-4 py-4 lg:py-5";
 export const GLOBAL_SEARCH_PLACEHOLDER_TEXT = "Search for anything";

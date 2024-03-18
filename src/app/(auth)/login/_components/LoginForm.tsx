@@ -77,7 +77,7 @@ const LoginForm: React.FC<{
               </FormItem>
             )}
           />
-
+          {/* TODO: Refactor supp actions like fgt password to be links styled as btns */}
           <div className="flex justify-between">
             <Link href={appRoutes.forgotPassword}>
               <button className="uppercase text-xs text-highlight">

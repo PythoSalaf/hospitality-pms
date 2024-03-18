@@ -1,6 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 # developer items
 LEARNING_GUIDE.ts
+/prisma/migrations
+/prisma/dev.db
+/prisma/dev.db-journal
+/prisma/local_migrations
 
 # local prisma files
 /prisma/___local_migrations
